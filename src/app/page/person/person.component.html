@@ -1,0 +1,42 @@
+<h1>
+  Quelques questions pour démarrer...
+</h1>
+
+<!-- age, genre, domaine et statut professionnel  -->
+<h3>Que âge avez-vous ?</h3>
+<form>
+  <mat-form-field>
+    <input matInput type="number"
+           [(ngModel)]="age" name="age">
+  </mat-form-field>
+</form>
+
+<h3>Vous êtes :</h3>
+<form [formGroup]="genderForm">
+  <div *ngFor="let g of genders">
+    <input type="radio" [value]="g" formControlName="gender">
+    <label [for]="g">{{g}}</label>
+  </div>
+</form>
+
+<h3>Votre secteur d'activité :</h3>
+<form [formGroup]="workForm" (click)="showOther()">
+    <div *ngFor="let w of works">
+      <input type="radio" [value]="w" formControlName="work">
+      <label [for]="w">{{w}}</label>
+    </div>
+    <div>
+      <input type="radio" value="Autre" formControlName="work">
+      <label for="Autre">Autre</label>
+    </div>
+</form>
+<form>
+  <input matInput type="text"
+         [(ngModel)]="workOther" name="workOther"
+         *ngIf="workPrecise">
+</form>
+
+
+<button mat-button (click)="next()">
+  Débuter le test
+</button>
