@@ -1,42 +1,45 @@
-<h1>
-  Quelques questions pour démarrer...
-</h1>
+<app-toolbar></app-toolbar>
 
-<!-- age, genre, domaine et statut professionnel  -->
-<h3>Que âge avez-vous ?</h3>
-<form>
-  <mat-form-field>
-    <input matInput type="number"
-           [(ngModel)]="age" name="age">
-  </mat-form-field>
-</form>
-
-<h3>Vous êtes :</h3>
-<form [formGroup]="genderForm">
-  <div *ngFor="let g of genders">
-    <input type="radio" [value]="g" formControlName="gender">
-    <label [for]="g">{{g}}</label>
-  </div>
-</form>
-
-<h3>Votre secteur d'activité :</h3>
-<form [formGroup]="workForm" (click)="showOther()">
-    <div *ngFor="let w of works">
-      <input type="radio" [value]="w" formControlName="work">
-      <label [for]="w">{{w}}</label>
-    </div>
-    <div>
-      <input type="radio" value="Autre" formControlName="work">
-      <label for="Autre">Autre</label>
-    </div>
-</form>
-<form>
-  <input matInput type="text"
-         [(ngModel)]="workOther" name="workOther"
-         *ngIf="workPrecise">
-</form>
+<div class="content">
+  <h1>
+    Quelques questions pour démarrer...
+  </h1>
 
 
-<button mat-button (click)="next()">
-  Débuter le test
-</button>
+
+  <form>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Que âge avez-vous ?"
+             [(ngModel)]="age" name="age">
+    </mat-form-field>
+  </form>
+
+
+
+
+  <label id="gender-radio-button">Vous êtes :</label>
+  <mat-radio-group
+    aria-labelledby="gender-radio-button"
+    [(ngModel)]="gender">
+    <mat-radio-button *ngFor="let g of genders" [value]="g">
+      {{g}}
+    </mat-radio-button>
+  </mat-radio-group>
+
+
+
+
+  <label id="work-radio-button">Votre secteur d'activité :</label>
+  <mat-radio-group
+      aria-labelledby="work-radio-button"
+      [(ngModel)]="work">
+    <mat-radio-button *ngFor="let w of works" [value]="w">
+      {{w}}
+    </mat-radio-button>
+  </mat-radio-group>
+
+
+  <button mat-raised-button (click)="next()">
+    Débuter le test
+  </button>
+</div>

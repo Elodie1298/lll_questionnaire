@@ -1,5 +1,4 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
 import {DatabaseConnectService} from '../../service/database-connect.service';
 
 @Component({
@@ -18,22 +17,17 @@ export class PersonComponent implements OnInit {
     "Communication / Marketing",
     "Finances / Gestion",
     "Informatique",
-    "Retraité"
+    "Retraité",
+    "Autre"
   ];
-  workPrecise: boolean = false;
-  workOther: string;
-  workForm = new FormGroup({
-    work: new FormControl('')
-  });
+  work: string;
 
   genders = [
     "Homme",
     "Femme",
     "Autre"
   ];
-  genderForm = new FormGroup({
-    gender: new FormControl('')
-  });
+  gender: string;
 
   constructor(private dbConnec: DatabaseConnectService) { }
 
@@ -47,25 +41,11 @@ export class PersonComponent implements OnInit {
     }
   }
 
-  showOther(): void {
-    setTimeout(() => {
-      if (this.workForm.getRawValue().work == "Autre") {
-        this.workPrecise = true;
-      } else {
-        this.workPrecise = false;
-      }
-    }, 5);
-
-  }
-
   next(): void {
     console.log("age: ", this.age);
-    let gender = this.genderForm.getRawValue().gender;
+    let gender = this.gender;
     console.log("gender: ", gender);
-    let w = this.workForm.getRawValue().work;
-    if (w == "Autre") {
-      w = this.workOther;
-    }
+    let w = this.work;
     console.log("work: ", w);
     if (this.age != null && w != null && gender!=null) {
       this.dbConnec.addPerson({
