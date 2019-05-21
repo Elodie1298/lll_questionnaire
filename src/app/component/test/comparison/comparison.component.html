@@ -1,0 +1,64 @@
+
+<audio #audioPlayer [src]="audioSrc"></audio>
+
+<div class="comparison-content content">
+  <h1>Comparaison {{num}} / {{tot}}</h1>
+
+
+  <span>Écoutez cet enregistrement :</span>
+  <button mat-fab class="record-button mat-elevation-z4" (click)="play(0)">
+    <mat-icon>volume_up</mat-icon>
+  </button>
+
+
+
+
+  <span>Sélectionnez le locuteur correspondant le plus à l'enregistrement</span>
+  <div class="choice-group">
+    <div class="choice">
+      <span>Locuteur 1</span>
+      <button mat-button class="mat-elevation-z6 img"
+              [ngStyle]="loc1"
+              (click)="click(1)">
+        <img src="assets/img/icons/locuteur.png">
+      </button>
+      <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play(1)">
+        <mat-icon>volume_up</mat-icon>
+      </button>
+      <div class="skip">
+        <button mat-button>
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button mat-button>
+          <mat-icon>skip_next</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="choice">
+      <span>Locuteur 2</span>
+      <button mat-button class="mat-elevation-z6 img"
+              [ngStyle]="loc2"
+              (click)="click(2)">
+        <img src="assets/img/icons/locuteur.png">
+      </button>
+      <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play(2)">
+        <mat-icon>volume_up</mat-icon>
+      </button>
+      <div class="skip">
+        <button mat-button>
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button mat-button>
+          <mat-icon>skip_next</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <button mat-raised-button class="validate-button"
+          [disabled]="!(_loc2 || _loc1)">
+    Valider
+  </button>
+</div>

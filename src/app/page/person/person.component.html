@@ -5,7 +5,8 @@
     Quelques questions pour démarrer...
   </h1>
 
-
+  <span *ngIf="!incorrect">Toutes les questions sont obligatoires.</span>
+  <span class="error" *ngIf="incorrect">Toutes les questions sont obligatoires.</span>
 
   <form>
     <mat-form-field>
@@ -38,6 +39,8 @@
     </mat-radio-button>
   </mat-radio-group>
 
+
+  <span class="error" *ngIf="incorrect">Certaines réponses sont incomplètes.</span>
 
   <button mat-raised-button (click)="next()">
     Débuter le test

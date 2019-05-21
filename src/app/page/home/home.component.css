@@ -1,0 +1,27 @@
+h1 {
+  font-weight: 400;
+  width: 100%;
+}
+
+p, span {
+  width: 100%;
+}
+
+button {
+  background-color: #616161;
+  color: white;
+  margin-bottom: 5%;
+}
+
+.logos{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.logos img{
+  width: 40%;
+}

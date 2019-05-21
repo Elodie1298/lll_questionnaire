@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 import { PersonComponent } from './page/person/person.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './page/home/home.component';
@@ -11,10 +12,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { ComparisonComponent } from './component/test/comparison/comparison.component';
+import { TestComponent } from './page/test/test.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path : 'person', component: PersonComponent}
+  {path : 'person', component: PersonComponent},
+  {path: 'test/:id', component: TestComponent}
   ];
 
 @NgModule({
@@ -22,7 +26,9 @@ const appRoutes: Routes = [
     AppComponent,
     ToolbarComponent,
     PersonComponent,
-    HomeComponent
+    HomeComponent,
+    ComparisonComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,9 @@ const appRoutes: Routes = [
     FormsModule,
     MatRadioModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [
     HttpClientModule,

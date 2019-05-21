@@ -1,0 +1,17 @@
+form, label, mat-radio-group {
+  width: 100%;
+}
+
+button {
+  background-color: #616161;
+  color: white;
+  margin-bottom: 5%;
+}
+
+span {
+  width: 100%;
+}
+
+span.error {
+  color: #FF0000;
+}
