@@ -1,0 +1,24 @@
+<div class="yesno content">
+  <h1>Question {{num}} / {{nbQuestTot}}</h1>
+
+  <span>Vous êtes-vous senti à l'aise pour répondre à cette question ?</span>
+  <div class="row">
+    <button mat-raised-button [disabled]="no" (click)="select('yes')">
+      Oui
+    </button>
+    <button mat-raised-button [disabled]="yes" (click)="select('no')">
+      Non
+    </button>
+  </div>
+
+  <span>Si non, pourquoi ?</span>
+  <form>
+    <mat-form-field class="example-full-width">
+      <textarea matInput [(ngModel)]="explanation"></textarea>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button class="validate">
+    Valider
+  </button>
+</div>

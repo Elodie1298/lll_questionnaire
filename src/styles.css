@@ -36,14 +36,17 @@ mat-radio-button {
   margin: 2px 10px;
 }
 
-.choice>span, app-comparison, app-verification {
+.choice>span,
+app-comparison, app-verification,
+app-yesno {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-app-comparison, app-verification {
+app-comparison, app-verification,
+app-yesno {
   width: 100%;
 }
 
