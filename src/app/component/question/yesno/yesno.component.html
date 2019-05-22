@@ -14,11 +14,11 @@
   <span>Si non, pourquoi ?</span>
   <form>
     <mat-form-field class="example-full-width">
-      <textarea matInput [(ngModel)]="explanation"></textarea>
+      <textarea matInput [formControl]="explanation"></textarea>
     </mat-form-field>
   </form>
 
-  <button mat-raised-button class="validate">
+  <button mat-raised-button class="validate" (click)="validate()">
     Valider
   </button>
 </div>

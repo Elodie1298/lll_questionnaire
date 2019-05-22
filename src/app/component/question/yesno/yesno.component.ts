@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-yesno',
@@ -11,7 +12,7 @@ export class YesnoComponent implements OnInit {
 
   selected: string;
 
-  explanation: string;
+  explanation = new FormControl();
 
   constructor() { }
 
@@ -43,5 +44,9 @@ export class YesnoComponent implements OnInit {
   }
   get no() {
     return this.selected == 'no';
+  }
+
+  validate() {
+    console.log(this.explanation.value);
   }
 }
