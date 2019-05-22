@@ -1,55 +1,97 @@
 
-<audio #audioPlayer [src]="audioSrc"></audio>
+<audio #audioPlayer [src]="currentAudio"></audio>
 
-<div class="comparison-content content">
-  <h1>Comparaison {{num}} / {{tot}}</h1>
+<div class="{{comparisonClass}} content">
+  <h1>Question {{num}} / {{nbQuestTot}}</h1>
 
 
   <span>Écoutez cet enregistrement :</span>
-  <button mat-fab class="record-button mat-elevation-z4" (click)="play(0)">
-    <mat-icon>volume_up</mat-icon>
+  <button mat-fab class="record-button mat-elevation-z4" (click)="play('main')">
+    <mat-icon class="volume_up">volume_up</mat-icon>
+    <mat-icon class="play_arrow">play_arrow</mat-icon>
   </button>
 
 
 
 
-  <span>Sélectionnez le locuteur correspondant le plus à l'enregistrement</span>
+  <span>Sélectionnez le locuteur correspondant le plus à l'enregistrement :</span>
+
   <div class="choice-group">
+
+
     <div class="choice">
-      <span>Locuteur 1</span>
+      <span *ngIf="isCaracteristique" If>{{caracteristique}} 1</span>
+      <span *ngIf="!isCaracteristique">Locuteur 1</span>
       <button mat-button class="mat-elevation-z6 img"
-              [ngStyle]="loc1"
-              (click)="click(1)">
-        <img src="assets/img/icons/locuteur.png">
+              [ngStyle]="speaker1Style"
+              (click)="select(1)"
+              matTooltip="Pour écouter le son, cliquez sur le bouton en haut à droite"
+              matTooltipPosition="right"
+              matTooltipShowDelay="200">
+        <img *ngIf="isCaracteristique" class="carac1" src="assets/img/icons/caracteristique1.png">
+        <img *ngIf="isCaracteristique" class="carac2" src="assets/img/icons/caracteristique2.png">
+        <img *ngIf="!isCaracteristique" src="assets/img/icons/locuteur.png">
       </button>
-      <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play(1)">
+      <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play('speaker1')">
         <mat-icon>volume_up</mat-icon>
       </button>
       <div class="skip">
-        <button mat-button>
+        <button mat-button (click)="previous('speaker1')">
           <mat-icon>skip_previous</mat-icon>
         </button>
-        <button mat-button>
+        <button mat-button class="play-sound"
+                (click)="play('speaker1')"
+                *ngIf="!spk1_on">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <mat-slider
+          *ngIf="spk1_on"
+          disabled="true"
+          min="0"
+          [max]="duration"
+          [value]="currentTime"
+        ></mat-slider>
+        <button mat-button (click)="next('speaker1')">
           <mat-icon>skip_next</mat-icon>
         </button>
       </div>
     </div>
 
+
+
     <div class="choice">
-      <span>Locuteur 2</span>
+      <span *ngIf="isCaracteristique" If>{{caracteristique}} 1</span>
+      <span *ngIf="!isCaracteristique">Locuteur 1</span>
       <button mat-button class="mat-elevation-z6 img"
-              [ngStyle]="loc2"
-              (click)="click(2)">
-        <img src="assets/img/icons/locuteur.png">
+              [ngStyle]="speaker2Style"
+              (click)="select(2)"
+              matTooltip="Pour écouter le son, cliquez sur le bouton en haut à droite"
+              matTooltipPosition="left"
+              matTooltipShowDelay="200">
+        <img *ngIf="isCaracteristique" class="carac1" src="assets/img/icons/caracteristique1.png">
+        <img *ngIf="isCaracteristique" class="carac2" src="assets/img/icons/caracteristique2.png">
+        <img *ngIf="!isCaracteristique" src="assets/img/icons/locuteur.png">
       </button>
-      <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play(2)">
+      <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play('speaker2')">
         <mat-icon>volume_up</mat-icon>
       </button>
       <div class="skip">
-        <button mat-button>
+        <button mat-button (click)="previous('speaker2')">
           <mat-icon>skip_previous</mat-icon>
         </button>
-        <button mat-button>
+        <button mat-button class="play-sound"
+                (click)="play('speaker2')"
+                *ngIf="!spk2_on">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <mat-slider
+          *ngIf="spk2_on"
+          disabled="true"
+          min="0"
+          [max]="duration"
+          [value]="currentTime"
+        ></mat-slider>
+        <button mat-button (click)="next('speaker2')">
           <mat-icon>skip_next</mat-icon>
         </button>
       </div>
@@ -58,7 +100,8 @@
 
 
   <button mat-raised-button class="validate-button"
-          [disabled]="!(_loc2 || _loc1)">
+          [disabled]="!(_speaker2 || _speaker1)"
+          (click)="validate($event)">
     Valider
   </button>
 </div>

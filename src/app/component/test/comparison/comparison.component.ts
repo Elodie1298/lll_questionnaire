@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 
 @Component({
@@ -7,65 +7,119 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./comparison.component.css']
 })
 export class ComparisonComponent implements OnInit {
-  @Input() num;
-  @Input() tot;
+  @Input() num: number;
+  @Input() nbQuestTot: number;
+
+  @Input() comparisonClass: string;
 
   @ViewChild('audioPlayer') audioPlayer: ElementRef;
 
-  audio = [
-    'assets/audio/test.mp3',
-    'assets/audio/test2.wav',
-    'assets/audio/test.mp3'
-  ];
+  @Input() audio;
 
-  currentAudio: number = 0;
+  @Input() caracteristique: string;
 
-  validation_color: string = "#64dd17";
+  @Output() validation = new EventEmitter();
 
-  _loc1: boolean = false;
-  _loc2: boolean = false;
+  speaker1Nb: number = 0;
+  speaker2Nb: number = 0;
+  currentAudio: string = "";
+
+  _speaker1: boolean = false;
+  _speaker2: boolean = false;
+
+  spk1_on: boolean = false;
+  spk2_on: boolean = false;
 
   constructor() { }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    console.log(this.audioPlayer);
+  }
 
-  click(n) {
+  select(n) {
     if (n==1) {
-      this._loc1 = !this._loc1;
-      this._loc2 = false;
+      this._speaker1 = !this._speaker1;
+      this._speaker2 = false;
     }
     if (n==2) {
-      this._loc2 = !this._loc2;
-      this._loc1 = false;
+      this._speaker2 = !this._speaker2;
+      this._speaker1 = false;
     }
   }
 
-  play(n) {
+  play(who) {
+    let path;
+    if (who == "main") {
+      path = this.audio.main;
+      this.spk1_on = false;
+      this.spk2_on = false;
+    } else if (who == "speaker1") {
+      path = this.audio.speaker1[this.speaker1Nb];
+      this.spk1_on = !this.spk1_on;
+    } else if (who == "speaker2") {
+      path = this.audio.speaker2[this.speaker2Nb];
+      this.spk2_on = !this.spk2_on;
+    }
     let paused = this.audioPlayer.nativeElement.paused;
     let current = this.currentAudio;
     this.audioPlayer.nativeElement.pause();
-    if (this.currentAudio != n) {
-      this.currentAudio = n;
+    if (this.currentAudio != path) {
+      this.currentAudio = path;
     }
-    console.log(current, this.currentAudio, paused);
     if (paused || current!=this.currentAudio) {
       setTimeout(() => this.audioPlayer.nativeElement.play(), 500);
     }
   }
 
-  get loc1() {
-    if (this._loc1) {
-      return {'background-color': this.validation_color};
+  next(who) {
+    if (who == "speaker1") {
+      this.speaker1Nb = (this.speaker1Nb+1)%this.audio.speaker1.length;
+    } else if (who == "speaker2") {
+      this.speaker2Nb = (this.speaker2Nb+1)%this.audio.speaker2.length;
+    }
+    if (!this.audioPlayer.nativeElement.paused) {
+      this.play(who);
     }
   }
 
-  get loc2() {
-    if (this._loc2) {
-      return {'background-color': this.validation_color};
+  previous(who) {
+    if (who == "speaker1") {
+      this.speaker1Nb = (this.speaker1Nb-1)%this.audio.speaker1.length;
+    } else if (who == "speaker2") {
+      this.speaker2Nb = (this.speaker2Nb-1)%this.audio.speaker2.length;
+    }
+    if (!this.audioPlayer.nativeElement.paused) {
+      this.play(who);
     }
   }
 
-  get audioSrc() {
-    return this.audio[this.currentAudio];
+  get speaker1Style() {
+    if (this._speaker1) {
+      return {'background-color': "#64dd17"};
+    }
+  }
+
+  get speaker2Style() {
+    if (this._speaker2) {
+      return {'background-color': "#64dd17"};
+    }
+  }
+
+  get duration() {
+    return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.duration;
+  }
+  get currentTime() {
+    return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.currentTime;
+  }
+  get paused() {
+    return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.paused;
+  }
+
+  get isCaracteristique() {
+    return this.caracteristique != undefined;
+  }
+
+  validate(event) {
+    this.validation.emit(event);
   }
 }

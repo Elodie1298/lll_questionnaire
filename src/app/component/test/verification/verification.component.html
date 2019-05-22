@@ -1,0 +1,72 @@
+<audio #audioPlayer [src]="currentAudio"></audio>
+
+<div class="{{verificationClass}} verification content">
+  <h1>Question {{num}} / {{nbQuestTot}}</h1>
+
+  <div class="row">
+    <div class="col">
+      <span>Écoutez cet enregistrement :</span>
+      <button mat-fab class="record-button mat-elevation-z4" (click)="play('main')">
+        <mat-icon class="volume_up">volume_up</mat-icon>
+        <mat-icon class="play_arrow">play_arrow</mat-icon>
+      </button>
+    </div>
+
+    <div class="col">
+      <div class="choice">
+        <span *ngIf="isCaracteristique">Écoutez cette caractéristique : {{caracteristique}} 1</span>
+        <span *ngIf="!isCaracteristique">Écoutez ce locuteur :</span>
+        <button mat-button class="mat-elevation-z6 img"
+                [ngStyle]="speakerStyle"
+                (click)="play('speaker')"
+                matTooltip="Pour écouter le son, cliquez sur le bouton en haut à droite"
+                matTooltipPosition="right"
+                matTooltipShowDelay="200">
+          <img *ngIf="isCaracteristique" class="carac1" src="assets/img/icons/caracteristique1.png">
+          <img *ngIf="isCaracteristique" class="carac2" src="assets/img/icons/caracteristique2.png">
+          <img *ngIf="!isCaracteristique" src="assets/img/icons/locuteur.png">
+        </button>
+        <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play('speaker')">
+          <mat-icon>volume_up</mat-icon>
+        </button>
+        <div class="skip">
+          <button mat-button (click)="previous('speaker')">
+            <mat-icon>skip_previous</mat-icon>
+          </button>
+          <button mat-button (click)="next('speaker')">
+            <mat-icon>skip_next</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+ <div class="col">
+   <span>Ce locuteur correspond bien à l'enregistrement ?</span>
+   <div class="row return" *ngIf="verificationClass!='verification-1'">
+      <button mat-fab class="clear">
+        <mat-icon>clear</mat-icon>
+      </button>
+      <button mat-fab class="done">
+        <mat-icon>done</mat-icon>
+      </button>
+      <button mat-fab color="light">
+        Passer
+      </button>
+    </div>
+   <div class="row return" *ngIf="verificationClass=='verification-1'">
+      <button mat-raised-button>
+        Oui
+      </button>
+      <button mat-raised-button>
+        Non
+      </button>
+      <button mat-raised-button>
+        Passer
+      </button>
+    </div>
+
+ </div>
+</div>

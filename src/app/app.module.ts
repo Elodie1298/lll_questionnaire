@@ -3,7 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatToolbarModule, MatTooltipModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRadioModule,
+  MatSliderModule, MatTableModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { PersonComponent } from './page/person/person.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -14,11 +22,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ComparisonComponent } from './component/test/comparison/comparison.component';
 import { TestComponent } from './page/test/test.component';
+import { VerificationComponent } from './component/test/verification/verification.component';
+
+import 'hammerjs';
+import { QuestionComponent } from './page/question/question.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path : 'person', component: PersonComponent},
-  {path: 'test/:id', component: TestComponent}
+  {path: 'test/:id', component: TestComponent},
+  {path: 'question/:id', component: QuestionComponent}
   ];
 
 @NgModule({
@@ -28,7 +41,9 @@ const appRoutes: Routes = [
     PersonComponent,
     HomeComponent,
     ComparisonComponent,
-    TestComponent
+    TestComponent,
+    VerificationComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +58,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSliderModule,
+    MatTableModule
   ],
   providers: [
     HttpClientModule,

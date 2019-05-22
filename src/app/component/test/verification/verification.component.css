@@ -1,0 +1,114 @@
+/* Verification*/
+.verification {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.verification span {
+  width: 100%;
+}
+.verification .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+}
+.verification .col {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.verification .row>.col {
+  width: 45%;
+}
+.verification .col>.row {
+  width: 50%;
+  margin-top: 20px;
+}
+.verification button.record-button {
+  background-color: #f5f5f5;
+  margin-top: 50px;
+  margin-bottom: 5em;
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+.verification button.record-button mat-icon {
+  display: none;
+}
+.verification button.record-button mat-icon.volume_up {
+  font-size: 40px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-block;
+}
+.verification .choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 176px;
+}
+.verification .choice img {
+  width: 128px;
+  height: 128px;
+}
+.verification .choice button.img {
+  background-color: #607d8b;
+  margin-top: 50px;
+  padding: 0;
+  border-radius: 100px;
+}
+.verification button.play-sound {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: none;
+}
+.verification button.play-sound, .verification-1 button.record-button {
+  border: none;
+}
+.verification button.play-sound:hover {
+  background-color: #eee;
+  transition: 250ms;
+}
+
+/* Verification 1*/
+.verification-1 .return button {
+  background-color: #616161;
+  color: #fafafa;
+}
+.verification .col>.row {
+  width: 70%;
+  margin-top: 20px;
+}
+.verification-1 .carac2 {
+  display: none;
+}
+
+/* Verification 2 */
+.verification-2 .return button {
+  background-color: #fafafa;
+  border-style: solid;
+  border-width: 1px;
+}
+.verification-2 .carac2 {
+  display: none;
+}
+
+/* Verificatio 3 */
+.verification-3 .clear {
+  background-color: #e53935;
+  color: #fafafa;
+}
+.verification-3 .done {
+  background-color: #43a047;
+  color: #fafafa;
+}
+.verification-3 .carac1 {
+  display: none;
+}

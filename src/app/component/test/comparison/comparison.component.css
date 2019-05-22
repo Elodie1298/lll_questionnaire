@@ -1,14 +1,13 @@
-.comparison-content {
+/* Comparison 1 */
+.comparison-1 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-span {
+.comparison-1 span {
   width: 100%;
 }
-
-.choice-group {
+.comparison-1 .choice-group {
   padding: 25px 0;
   width: 100%;
   display: flex;
@@ -16,60 +15,250 @@ span {
   justify-content: space-around;
   align-items: center;
 }
-
-.choice {
+.comparison-1 .choice {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  width: 176px;
 }
-
-.choice img {
+.comparison-1 .choice img {
   width: 128px;
   height: 128px;
 }
-.choice button.img {
+.comparison-1 .choice button.img {
   background-color: #607d8b;
   margin-top: 10px;
   padding: 0;
   border-radius: 100px;
 }
-
-button.play-sound {
+.comparison-1 .choice img.carac2 {
+  display: none;
+}
+.comparison-1 button.play-sound {
   position: absolute;
   top: 0;
   right: 0;
   background: none;
 }
-
-button.play-sound, button.record-button {
+.comparison-1 button.play-sound, .comparison-1 button.record-button {
   border: none;
 }
-
-button.record-button {
+.comparison-1 button.play-sound:hover {
+  background-color: #eee;
+  transition: 250ms;
+}
+.comparison-1 button.record-button {
   background-color: #f5f5f5;
   margin-top: 1em;
-  margin-bottom: 7em;
+  margin-bottom: 5em;
+  width: 80px;
+  height: 80px;
+  position: relative;
 }
-
-.skip {
+.comparison-1 button.record-button mat-icon {
+  display: none;
+}
+.comparison-1 button.record-button mat-icon.volume_up {
+  font-size: 40px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-block;
+}
+.comparison-1 .skip {
   padding-top: 5px;
   width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.skip button {
+.comparison-1 .skip .play-sound {
+  display: none;
+}
+.comparison-1 .skip button {
   width: 25%;
   padding: 0;
 }
-
-button.green-bg-loc {
+.comparison-1 button.green-bg-loc {
   background-color: greenyellow !important;
 }
+.comparison-1 .validate-button {
+  margin: 25px 0;
+  background-color: #80cbc4;
+}
 
-.validate-button {
-  margin-top: 25px;
 
+/* Comparison 2 */
+.comparison-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comparison-2 span {
+  width: 100%;
+}
+.comparison-2 .choice-group {
+  padding: 25px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.comparison-2 .choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 176px;
+}
+.comparison-2 .choice img {
+  width: 128px;
+  height: 128px;
+}
+.comparison-2 .choice img.carac1 {
+  display: none;
+}
+.comparison-2 .choice button.img {
+  background-color: #607d8b;
+  margin-top: 10px;
+  padding: 0;
+  border-radius: 100px;
+}
+.comparison-2 button.play-sound {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+}
+.comparison-2 button.play-sound, .comparison-2 button.record-button {
+  border: none;
+}
+.comparison-2 button.play-sound:hover {
+  background-color: #eee;
+  transition: 250ms;
+}
+.comparison-2 button.record-button {
+  background-color: #121212;
+  margin-top: 1em;
+  margin-bottom: 5em;
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+.comparison-2 button.record-button mat-icon {
+  display: none;
+}
+.comparison-2 button.record-button mat-icon.play_arrow {
+  font-size: 64px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: inline-block;
+  color: #f5f5f5;
+}
+.comparison-2 .skip {
+  display: none;
+}
+.comparison-2 .skip .play-sound {
+  display: none;
+}
+.comparison-2 button.green-bg-loc {
+  background-color: greenyellow !important;
+}
+.comparison-2 .validate-button {
+  margin: 25px 0;
+  background-color: #80cbc4;
+}
+
+
+/* Comparison 3 TODO */
+.comparison-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comparison-3 span {
+  width: 100%;
+}
+.comparison-3 .choice-group {
+  padding: 25px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.comparison-3 .choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 176px;
+}
+.comparison-3 .choice img {
+  width: 128px;
+  height: 128px;
+}
+.comparison-3 .choice button.img {
+  background-color: #607d8b;
+  margin-top: 10px;
+  padding: 0;
+  border-radius: 100px;
+}
+.comparison-3 button.play-sound {
+  display: none;
+}
+.comparison-3 button.record-button {
+  background-color: #f5f5f5;
+  margin-top: 1em;
+  margin-bottom: 5em;
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+.comparison-3 button.record-button mat-icon {
+  display: none;
+}
+.comparison-3 button.record-button mat-icon.volume_up {
+  font-size: 64px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: inline-block;
+}
+.comparison-3 .skip {
+  background-color: #f5f5f5;
+  margin-top: 5px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow:0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+}
+.comparison-3 .skip button {
+  width: 28px !important;
+  min-width: 0;
+  padding: 0;
+  color: #424242;
+}
+.comparison-3 .skip button.play-sound {
+  display: inline-block;
+  color: #212121;
+}
+.comparison-3 .skip mat-slider {
+  min-width: 0;
+  width: 108px;
+}
+.comparison-3 button.green-bg-loc {
+  background-color: greenyellow !important;
+}
+.comparison-3 .validate-button {
+  margin: 25px 0;
+  background-color: #80cbc4;
 }

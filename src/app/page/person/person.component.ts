@@ -62,8 +62,7 @@ export class PersonComponent implements OnInit {
     //   this.incorrect = true;
     // }
     this.router.navigateByUrl("test/0")
-      .then(_ => console.log(_))
-      .catch(_ => console.log(_));
+      .catch(e => console.log(e));
   }
 
 }
