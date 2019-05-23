@@ -1,5 +1,6 @@
 .utility {
-  width: 80%;
+  min-width: 550px;
+  width: 50%;
 }
 .utility span {
   width: 100%;
@@ -21,7 +22,7 @@
   background-color: #9e9e9e;
 }
 .utility form {
-  width: 60%;
+  width: 80%;
 }
 .utility textarea, .utility mat-form-field {
   width: 100%;
@@ -34,4 +35,7 @@
 }
 .utility .validate {
   background-color: #80cbc4;
+}
+.utility mat-radio-group {
+  width: 80%;
 }

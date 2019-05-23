@@ -29,6 +29,7 @@ import { QuestionComponent } from './page/question/question.component';
 import { YesnoComponent } from './component/question/yesno/yesno.component';
 import { Compar2Component } from './component/question/compar2/compar2.component';
 import { UtilityComponent } from './component/question/utility/utility.component';
+import { Compar3Component } from './component/question/compar3/compar3.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     QuestionComponent,
     YesnoComponent,
     Compar2Component,
-    UtilityComponent
+    UtilityComponent,
+    Compar3Component
   ],
   imports: [
     BrowserModule,

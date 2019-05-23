@@ -17,4 +17,6 @@ export class QuestionComponent implements OnInit {
   ngOnInit() {
   }
 
+  //TODO : redirect templates
+
 }

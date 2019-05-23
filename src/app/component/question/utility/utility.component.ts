@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -23,6 +23,13 @@ export class UtilityComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key == "Enter") {
+      this.validate();
+    }
   }
 
   validate() {
