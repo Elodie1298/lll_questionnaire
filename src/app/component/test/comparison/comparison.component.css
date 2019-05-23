@@ -254,6 +254,13 @@
 .comparison-3 .skip mat-slider {
   min-width: 0;
   width: 108px;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
 }
 .comparison-3 button.green-bg-loc {
   background-color: greenyellow !important;

@@ -1,0 +1,129 @@
+.compar2 {
+  width: 80%;
+}
+.compar2 span {
+  width: 100%;
+  margin-top: 15px;
+}
+.compar2 .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.compar2 .row button:disabled {
+  background-color: #9e9e9e;
+}
+.compar2 form {
+  width: 60%;
+}
+.compar2 textarea, .compar2 mat-form-field {
+  width: 100%;
+}
+.compar2 textarea {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bdbdbd;
+  background-color: #eee;
+}
+.compar2 .validate {
+  margin-top: 50px;
+  background-color: #80cbc4;
+}
+
+.compar2 .row img {
+  width: 128px;
+  height: 128px;
+}
+.compar2 .row button.img {
+  background-color: #607d8b;
+  margin-top: 10px;
+  padding: 0;
+  border-radius: 100px;
+}
+
+
+.compar2 .row button.record-button {
+  background-color: #f5f5f5;
+  margin-top: 1em;
+  margin-bottom: 5em;
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+.compar2 .row button.record-button mat-icon {
+  font-size: 40px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-block;
+  color: #000;
+}
+.compar2 .row button.record-button.play_arrow mat-icon {
+  font-size: 64px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: inline-block;
+  color: #f5f5f5;
+}
+.compar2 .row button.record-button.play_arrow {
+  background-color: #121212;
+}
+
+
+.compar2 .choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 176px;
+}
+.compar2 .choice .mat-mini-fab.play-sound {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: black;
+}
+.compar2 .choice .mat-mini-fab.play-sound:hover {
+  background-color: #eee;
+  transition: 250ms;
+}
+
+
+.compar2 .second.skip {
+  background-color: #f5f5f5;
+  margin-top: 5px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow:0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+}
+.compar2 .second.skip button {
+  width: 28px !important;
+  min-width: 0;
+  padding: 0;
+  color: #424242;
+}
+.compar2 .second.skip button.play-sound {
+  display: inline-block;
+  color: #212121;
+}
+.compar2 .second.skip mat-slider {
+  min-width: 0;
+  width: 108px;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
