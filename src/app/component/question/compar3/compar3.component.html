@@ -14,6 +14,58 @@
     </button>
   </div>
 
+  <span *ngIf="!isRecord">Quel design trouvez-vous le plus intuitif pour la question ?</span>
+  <div class="row cards" *ngIf="!isRecord">
+    <mat-card class="bnw">
+      <mat-card-content>
+        <button mat-fab class="clear">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button mat-fab class="done">
+          <mat-icon>done</mat-icon>
+        </button>
+        <button mat-fab color="light">
+          Passer
+        </button>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="select(0)" [disabled]="selected!=undefined && selected!=0">Sélectionner</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="colored">
+      <mat-card-content>
+        <button mat-fab class="clear">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button mat-fab class="done">
+          <mat-icon>done</mat-icon>
+        </button>
+        <button mat-fab color="light">
+          Passer
+        </button>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="select(1)" [disabled]="selected!=undefined && selected!=1">Sélectionner</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="text">
+      <mat-card-content>
+        <button mat-raised-button>
+          Oui
+        </button>
+        <button mat-raised-button>
+          Non
+        </button>
+        <button mat-raised-button>
+          Passer
+        </button>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="select(2)" [disabled]="selected!=undefined && selected!=2">Sélectionner</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
   <button mat-raised-button class="validate" (click)="validate()">
     Valider
   </button>

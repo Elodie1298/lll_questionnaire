@@ -50,3 +50,6 @@ app-yesno, app-compar2, app-utility, app-compar3 {
   width: 100%;
 }
 
+.validate {
+  margin-bottom: 20px !important;
+}

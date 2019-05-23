@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatFormFieldModule,
   MatInputModule,
   MatRadioModule,
@@ -68,7 +68,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatTooltipModule,
     MatSliderModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ],
   providers: [
     HttpClientModule,
