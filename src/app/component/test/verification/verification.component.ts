@@ -32,11 +32,11 @@ export class VerificationComponent implements OnInit {
 
   play(who) {
     let path;
-    if (who == "main") {
+    if (who == "demo") {
       path = this.audio.main;
       this.spk_on = false;
-    } else if (who == "speaker") {
-      path = this.audio.speaker[this.speakerNb];
+    } else if (who == "speaker1") {
+      path = this.audio.speaker1[this.speakerNb];
       this.spk_on = !this.spk_on;
     }
     let paused = this.audioPlayer.nativeElement.paused;
@@ -51,8 +51,8 @@ export class VerificationComponent implements OnInit {
   }
 
   next(who) {
-    if (who == "speaker") {
-      this.speakerNb = (this.speakerNb+1)%this.audio.speaker.length;
+    if (who == "speaker1") {
+      this.speakerNb = (this.speakerNb+1)%this.audio.speaker1.length;
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);
@@ -60,8 +60,8 @@ export class VerificationComponent implements OnInit {
   }
 
   previous(who) {
-    if (who == "speaker") {
-      this.speakerNb = (this.speakerNb-1)%this.audio.speaker.length;
+    if (who == "speaker1") {
+      this.speakerNb = (this.speakerNb-1)%this.audio.speaker1.length;
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);

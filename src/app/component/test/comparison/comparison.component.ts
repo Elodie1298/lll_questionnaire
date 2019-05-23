@@ -49,7 +49,7 @@ export class ComparisonComponent implements OnInit {
 
   play(who) {
     let path;
-    if (who == "main") {
+    if (who == "demo") {
       path = this.audio.main;
       this.spk1_on = false;
       this.spk2_on = false;

@@ -19,6 +19,8 @@ export class UtilService {
     return this._types;
   }
 
+  private _questionsDone: Array<Number> = new Array<Number>();
+
   constructor() {
     this._questionTemplates.set('CL', 4);
     this._questionTemplates.set('CC', 2);
@@ -47,6 +49,7 @@ export class UtilService {
     }
   }
 
-
-
+  addQuestion(id: number) {
+    this._questionsDone.push(id);
+  }
 }

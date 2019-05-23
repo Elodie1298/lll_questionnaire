@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col">
       <span>Écoutez cet enregistrement :</span>
-      <button mat-fab class="record-button mat-elevation-z4" (click)="play('main')">
+      <button mat-fab class="record-button mat-elevation-z4" (click)="play('demo')">
         <mat-icon class="volume_up">volume_up</mat-icon>
         <mat-icon class="play_arrow">play_arrow</mat-icon>
       </button>
@@ -18,7 +18,7 @@
         <span *ngIf="!isCaracteristique">Écoutez ce locuteur :</span>
         <button mat-button class="mat-elevation-z6 img"
                 [ngStyle]="speakerStyle"
-                (click)="play('speaker')"
+                (click)="play('speaker1')"
                 matTooltip="Pour écouter le son, cliquez sur le bouton en haut à droite"
                 matTooltipPosition="right"
                 matTooltipShowDelay="200">
@@ -26,14 +26,14 @@
           <img *ngIf="isCaracteristique" class="carac2" src="assets/img/icons/caracteristique2.png">
           <img *ngIf="!isCaracteristique" src="assets/img/icons/locuteur.png">
         </button>
-        <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play('speaker')">
+        <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play('speaker1')">
           <mat-icon>volume_up</mat-icon>
         </button>
         <div class="skip">
-          <button mat-button (click)="previous('speaker')">
+          <button mat-button (click)="previous('speaker1')">
             <mat-icon>skip_previous</mat-icon>
           </button>
-          <button mat-button (click)="next('speaker')">
+          <button mat-button (click)="next('speaker1')">
             <mat-icon>skip_next</mat-icon>
           </button>
         </div>

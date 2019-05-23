@@ -33,7 +33,8 @@ export class PersonComponent implements OnInit {
 
   incorrect: boolean = false;
 
-  constructor(private dbConnec: DatabaseConnectService, private router: Router) { }
+  constructor(private dbConnec: DatabaseConnectService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -46,6 +47,8 @@ export class PersonComponent implements OnInit {
   }
 
   next(): void {
+    //TODO: uncomment following lines
+
     // console.log("age: ", this.age);
     // let gender = this.gender;
     // console.log("gender: ", gender);
@@ -61,6 +64,7 @@ export class PersonComponent implements OnInit {
     // else {
     //   this.incorrect = true;
     // }
+
     this.router.navigateByUrl("test/0")
       .catch(e => console.log(e));
   }

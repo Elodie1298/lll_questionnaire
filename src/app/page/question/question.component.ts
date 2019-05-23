@@ -8,7 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class QuestionComponent implements OnInit {
   id: number;
-  nbQuestTot = 20;
+  nbQuestTot = 10;
 
   template: string = "Q_IC_1";
   static templates = new Map();

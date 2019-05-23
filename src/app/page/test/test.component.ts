@@ -8,9 +8,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class TestComponent implements OnInit {
   id: number;
-  nbQuestTot = 20;
+  nbQuestTot = 10;
 
-  template: string = "T_VL_1";
+  template: string;
 
   audioComparaison = {
     main: 'assets/audio/test.mp3',
