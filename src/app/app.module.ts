@@ -28,6 +28,7 @@ import 'hammerjs';
 import { QuestionComponent } from './page/question/question.component';
 import { YesnoComponent } from './component/question/yesno/yesno.component';
 import { Compar2Component } from './component/question/compar2/compar2.component';
+import { UtilityComponent } from './component/question/utility/utility.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     VerificationComponent,
     QuestionComponent,
     YesnoComponent,
-    Compar2Component
+    Compar2Component,
+    UtilityComponent
   ],
   imports: [
     BrowserModule,

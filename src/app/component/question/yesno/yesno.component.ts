@@ -47,6 +47,7 @@ export class YesnoComponent implements OnInit {
   }
 
   validate() {
+    console.log(this.selected);
     console.log(this.explanation.value);
   }
 }
