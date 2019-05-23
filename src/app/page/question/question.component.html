@@ -1,20 +1,24 @@
 <app-toolbar></app-toolbar>
 
-<!--<app-yesno-->
-<!--  [num]="id" [nbQuestTot]="nbQuestTot"-->
-<!--&gt;</app-yesno>-->
+<app-yesno
+  [num]="id" [nbQuestTot]="nbQuestTot"
+  *ngIf="yesno"
+></app-yesno>
 
-<!--<app-compar2-->
-<!--  [num]="id" [nbQuestTot]="nbQuestTot"-->
-<!--  [isCaracteristique]="false"-->
-<!--  [isSpeaker]="true"-->
-<!--&gt;</app-compar2>-->
+<app-compar2
+  [num]="id" [nbQuestTot]="nbQuestTot"
+  [isCaracteristique]="(typeTemplate=='CC' && nbTemplate==3) || typeTemplate=='IL'"
+  [isSpeaker]="typeTemplate=='CL'"
+  *ngIf="compar2"
+></app-compar2>
 
-<!--<app-utility-->
-<!--  [num]="id" [nbQuestTot]="nbQuestTot"-->
-<!--&gt;</app-utility>-->
+<app-utility
+  [num]="id" [nbQuestTot]="nbQuestTot"
+  *ngIf="utility"
+></app-utility>
 
 <app-compar3
   [num]="id" [nbQuestTot]="nbQuestTot"
-  [isRecord]="false"
+  *ngIf="compar3"
+  [isRecord]="typeTemplate=='CL'"
 ></app-compar3>
