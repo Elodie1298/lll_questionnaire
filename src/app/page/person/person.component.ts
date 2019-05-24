@@ -1,7 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {DatabaseConnectService} from '../../service/database-connect.service';
-import {Router, RouterModule} from '@angular/router';
-import {HomeComponent} from '../home/home.component';
+import {Router} from '@angular/router';
+import {UtilService} from '../../service/util.service';
 
 @Component({
   selector: 'app-person',
@@ -47,23 +47,22 @@ export class PersonComponent implements OnInit {
   }
 
   next(): void {
-    //TODO: uncomment following lines
-
-    // console.log("age: ", this.age);
-    // let gender = this.gender;
-    // console.log("gender: ", gender);
-    // let w = this.work;
-    // console.log("work: ", w);
-    // if (this.age != null && w != null && gender!=null) {
-    //   this.dbConnec.postPerson({
-    //     age: this.age,
-    //     gender: gender,
-    //     activity: w
-    //   });
-    // }
-    // else {
-    //   this.incorrect = true;
-    // }
+    let gender = this.gender;
+    let w = this.work;
+    if (this.age != null && w != null && gender!=null) {
+      this.dbConnec.postPerson({
+        age: this.age,
+        gender: gender,
+        activity: w
+      })
+        .then(res => {
+          UtilService.userId = res.userId;
+        })
+        .catch(e => console.log(e));
+    }
+    else {
+      this.incorrect = true;
+    }
 
     this.router.navigateByUrl("test/1")
       .catch(e => console.log(e));

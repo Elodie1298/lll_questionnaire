@@ -18,7 +18,8 @@ export class QuestionComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private dbConnect: DatabaseConnectService) {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -64,9 +65,17 @@ export class QuestionComponent implements OnInit {
   }
 
   next(ans) {
-    console.log(ans);
-    UtilService.currentAnswer.set('answer_interface_template', this.template);
-    UtilService.currentAnswer.set('answer_interface', ans);
+    new Promise(resolve => {
+      UtilService.currentAnswer.set('answer_interface_template', this.template);
+      UtilService.currentAnswer.set('answer_interface', ans);
+      UtilService.currentAnswer.set('user_id', UtilService.userId);
+      UtilService.currentAnswer.set('question_id', +this.question.questionId);
+      UtilService.currentAnswer.set('answer_extra_log', null);
+      resolve(true);
+    })
+      .then(_ => this.dbConnect.postAnswer())
+      .catch(e => console.log(e));
+    console.log("Answer : ",UtilService.currentAnswer);
     window.location.assign('#/test/'+(this.id+1));
   }
 }

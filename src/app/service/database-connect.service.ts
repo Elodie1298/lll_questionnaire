@@ -8,10 +8,7 @@ import {UtilService} from './util.service';
 export class DatabaseConnectService {
   postPersonURL: string = "https://lll.elodiemorin.web-edu.fr/php/addPerson.php";
   getQuestionListURL: string = "https://lll.elodiemorin.web-edu.fr/php/getQuestionList.php";
-  //TODO: specifiate getQuestionURL;
-  getQuestionURL: string;
-  //TODO: specifiate postQuestionURL;
-  postQuestionURL: string;
+  postAnswerURL: string = "https://lll.elodiemorin.web-edu.fr/php/sendQuestion.php";
   private headers = new HttpHeaders()
     .set('cache-control', 'no-cache')
     .set('Content-Type', 'application/json')
@@ -30,35 +27,42 @@ export class DatabaseConnectService {
     return queryUrl;
   }
 
-  public postPerson(person) {
+  public postPerson(person): Promise<any> {
     let params = new HttpParams()
       .set('age', person.age)
       .set('activity', person.activity)
       .set('gender', person.gender);
     let url = this.prepareUrl(this.postPersonURL, params);
     console.log(url);
-    this.http.post(url,{headers: this.headers})
-      .subscribe(_ => console.log("done"));
+    return this.http.post(url,{headers: this.headers})
+      .toPromise();
   }
 
   //TODO : uncomment following code and test json requests
 
   public getQuestionList() {
-    this.http.get(this.getQuestionListURL, {headers: this.headers})
-      .subscribe(res => {
-        // @ts-ignore
-        console.log(res.res);
-        // @ts-ignore
-        UtilService.questions = res.res;
-      });
+    return this.http.get(this.getQuestionListURL, {headers: this.headers})
+      .toPromise()
   }
 
 
   //TODO: treat request
 
-  public postQuestion() {}
-  // public postQuestion() {
-  //   this.http.post(postQuestionURL, {headers: this.headers})
-  //     .subscribe();
-  // }
+  public postAnswer() {
+    const answerData = new FormData();
+    UtilService.currentAnswer.forEach((value, key) => {
+      if (value == null) {
+        value = "";
+      }
+      if (typeof value == 'object') {
+        value = JSON.stringify(value);
+      }
+      console.log(key, typeof value , value);
+      answerData.append(key, value);
+    });
+    this.http.post(this.postAnswerURL, answerData)
+      .toPromise()
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
+  }
 }

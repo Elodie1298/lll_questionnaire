@@ -24,4 +24,5 @@ button {
 
 .logos img{
   width: 40%;
+  max-width: 300px;
 }

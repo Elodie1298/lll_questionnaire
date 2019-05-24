@@ -6,19 +6,21 @@
 
   <div>
     <div>
-      <span>Écoutez cet enregistrement :</span>
-      <button mat-fab class="record-button mat-elevation-z4" (click)="play('demo')">
-        <mat-icon class="volume_up">volume_up</mat-icon>
-      </button>
-    </div>
+      <div>
+        <span>Écoutez cet enregistrement :</span>
+        <button mat-fab class="record-button mat-elevation-z4" (click)="play('demo')">
+          <mat-icon class="volume_up">volume_up</mat-icon>
+        </button>
+      </div>
 
 
 
-    <div>
-      <span>Sélectionnez le locuteur correspondant le plus à l'enregistrement :</span>
-      <section class="caracs">
-        <mat-checkbox *ngFor="let c of caracs" [(ngModel)]="carac[c]">{{c}}</mat-checkbox>
-      </section>
+      <div>
+        <span>Sélectionnez le locuteur correspondant le plus à l'enregistrement :</span>
+        <section class="caracs">
+          <mat-checkbox *ngFor="let c of caracs" [(ngModel)]="carac[c]">{{c}}</mat-checkbox>
+        </section>
+      </div>
     </div>
   </div>
 

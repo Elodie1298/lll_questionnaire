@@ -12,6 +12,8 @@ export class UtilService {
 
   static questions;
 
+  static userId: string = "5ce7b6295d70a";
+
   private _questionsDone: Array<Number> = new Array<Number>();
   static currentAnswer : Map<string, any>;
 

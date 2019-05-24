@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {UtilService} from '../../service/util.service';
+import {DatabaseConnectService} from '../../service/database-connect.service';
 
 @Component({
   selector: 'app-test',
@@ -11,20 +12,28 @@ export class TestComponent implements OnInit {
   id: number;
   nbQuestTot = 10;
 
-  template;
+  template = "T_IC_3";
 
   question;
 
-  private begin = new Date();
+  private begin;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private dbConnect: DatabaseConnectService) {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit() {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
+    if (UtilService.questions == undefined) {
+      this.dbConnect.getQuestionList()
+        .then((ans: any) => {
+          UtilService.questions = ans.res;
+        });
+    }
     this.question = UtilService.questions[this.id];
     this.template = UtilService.getTestTemplate(this.question);
+    this.begin = new Date();
   }
 
   get time() {
