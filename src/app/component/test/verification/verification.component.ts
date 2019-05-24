@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-verification',
@@ -6,38 +6,39 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./verification.component.css']
 })
 export class VerificationComponent implements OnInit {
-  @Input() num;
-  @Input() nbQuestTot;
+  @Input() num: number;
+  @Input() nbQuestTot: number;
 
-  @Input() verificationClass;
-  @Input() audio;
-
-  @Input() caracteristique: string;
+  @Input() verificationClass: string;
+  @Input() question;
+  @Input() isCaracteristique: boolean;
 
   @ViewChild('audioPlayer') audioPlayer: ElementRef;
 
-  currentAudio: string;
+  @Output() validation = new EventEmitter();
 
-  spk_on: boolean = false;
-  speakerNb: number = 0;
+  speaker1Nb: number = 0; //Numéro du fichier audio affiché pour le locuteur
+  currentAudio: string = ""; //fichier audio actuellement chargé dans le lecteur
 
-  _speaker: boolean = false;
+  _speaker1: boolean = false; // Le locuteur est selectionné
 
-  //TODO: All class - look at comparison
+  spk1_on: boolean = false; // Le locuteur est actuellement chargé dans le lecteur
+
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
+  // Chargement du fichier demandé, si nécessaire,  puis mise en play ou pause du lecteur.
   play(who) {
     let path;
     if (who == "demo") {
-      path = this.audio.main;
-      this.spk_on = false;
-    } else if (who == "speaker1") {
-      path = this.audio.speaker1[this.speakerNb];
-      this.spk_on = !this.spk_on;
+      path = this.question.audio.audioPath;
+      this.spk1_on = false;
+    }
+    else if (who == "speaker1") {
+      path = this.question.speaker1.audiosPath[this.speaker1Nb];
+      this.spk1_on = !this.spk1_on;
     }
     let paused = this.audioPlayer.nativeElement.paused;
     let current = this.currentAudio;
@@ -50,32 +51,33 @@ export class VerificationComponent implements OnInit {
     }
   }
 
+  // Changement d'audio sur un speaker
   next(who) {
     if (who == "speaker1") {
-      this.speakerNb = (this.speakerNb+1)%this.audio.speaker1.length;
+      this.speaker1Nb = (this.speaker1Nb+1)%this.question.speaker1.audiosPath.length;
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);
     }
   }
-
   previous(who) {
     if (who == "speaker1") {
-      this.speakerNb = (this.speakerNb-1)%this.audio.speaker1.length;
+      this.speaker1Nb = (this.speaker1Nb-1)%this.question.speaker1.audiosPath.length;
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);
     }
   }
 
-  get isCaracteristique() {
-    return this.caracteristique != undefined;
-  }
-
-  get speakerStyle() {
-    if (this._speaker) {
+  // Changement du style du locuteur sélectionné -> visibilité de la sélection
+  get speaker1Style() {
+    if (this._speaker1) {
       return {'background-color': "#64dd17"};
     }
+  }
+
+  validate(ans) {
+    this.validation.emit(ans);
   }
 
 }

@@ -1,4 +1,4 @@
-<audio #audioPlayer [src]="currentAudio"></audio>
+<audio #audioPlayer [src]="'assets/audio/'+currentAudio"></audio>
 
 <div class="{{verificationClass}} verification content">
   <h1>Question {{num}} / {{nbQuestTot}}</h1>
@@ -14,10 +14,10 @@
 
     <div class="col">
       <div class="choice">
-        <span *ngIf="isCaracteristique">Écoutez cette caractéristique : {{caracteristique}} 1</span>
+        <span *ngIf="isCaracteristique">Écoutez cette caractéristique : {{question.carac1.caracName}}</span>
         <span *ngIf="!isCaracteristique">Écoutez ce locuteur :</span>
         <button mat-button class="mat-elevation-z6 img"
-                [ngStyle]="speakerStyle"
+                [ngStyle]="speaker1Style"
                 (click)="play('speaker1')"
                 matTooltip="Pour écouter le son, cliquez sur le bouton en haut à droite"
                 matTooltipPosition="right"
@@ -44,26 +44,32 @@
 
 
  <div class="col">
-   <span>Ce locuteur correspond bien à l'enregistrement ?</span>
+   <span *ngIf="verificationClass!='verification-4' && !isCaracteristique">
+     Ce locuteur correspond bien à l'enregistrement ?
+   </span>
+   <span *ngIf="verificationClass!='verification-4' && isCaracteristique">
+     Cette caractéristique correspond bien à l'enregistrement ?
+   </span>
+   <span *ngIf="verificationClass=='verification-4'">L'enregistrement contient la caractéristique {{question.carac1.caracName}} ?</span>
    <div class="row return" *ngIf="verificationClass!='verification-1'">
-      <button mat-fab class="clear">
+      <button mat-fab class="clear" (click)="validate('oui')">
         <mat-icon>clear</mat-icon>
       </button>
-      <button mat-fab class="done">
+      <button mat-fab class="done" (click)="validate('non')">
         <mat-icon>done</mat-icon>
       </button>
-      <button mat-fab color="light">
+      <button mat-fab color="light" (click)="validate('pass')">
         Passer
       </button>
     </div>
    <div class="row return" *ngIf="verificationClass=='verification-1'">
-      <button mat-raised-button>
+      <button mat-raised-button (click)="validate('oui')">
         Oui
       </button>
-      <button mat-raised-button>
+      <button mat-raised-button (click)="validate('non')">
         Non
       </button>
-      <button mat-raised-button>
+      <button mat-raised-button (click)="validate('pass')">
         Passer
       </button>
     </div>

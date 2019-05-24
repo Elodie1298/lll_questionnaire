@@ -5,14 +5,25 @@
   *ngIf="isComparison"
   [num]="id" [nbQuestTot]="nbQuestTot"
   [comparisonClass]="'comparison-'+nbTemplate"
-  [audio]="audioComparaison"
-  [caracteristique]="caracteristique"
+  [question]="question"
+  [isCaracteristique]="isCaracteristique"
   (validation)="next($event)"
 ></app-comparison>
+
 <app-verification
-  *ngIf="!isComparison"
+  *ngIf="isVerification"
   [num]="id" [nbQuestTot]="nbQuestTot"
   [verificationClass]="'verification-'+nbTemplate"
-  [audio]="audioVerification"
-  [caracteristique]="caracteristique"
+  [question]="question"
+  [isCaracteristique]="isCaracteristique"
+  (validation)="next($event)"
 ></app-verification>
+
+<app-identification
+  *ngIf="isIdentification"
+  [num]="id" [nbQuestTot]="nbQuestTot"
+  [identificationClass]="'identification-'+nbTemplate"
+  [question]="question"
+  [isCaracteristique]="isCaracteristique"
+  (validation)="next($event)"
+></app-identification>

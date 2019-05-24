@@ -1,4 +1,4 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import {FormControl} from '@angular/forms';
 export class UtilityComponent implements OnInit {
   @Input() num;
   @Input() nbQuestTot;
+
+  @Output() validation = new EventEmitter();
 
   explanation = new FormControl();
 
@@ -32,9 +34,12 @@ export class UtilityComponent implements OnInit {
     }
   }
 
+
   validate() {
-    console.log(this.utility);
-    console.log(this.explanation.value);
+    this.validation.emit({
+      selected: this.utility,
+      explanation: this.explanation.value
+    });
   }
 
 }

@@ -11,31 +11,28 @@ export class ComparisonComponent implements OnInit {
   @Input() nbQuestTot: number;
 
   @Input() comparisonClass: string;
+  @Input() question;
+  @Input() isCaracteristique: boolean;
 
   @ViewChild('audioPlayer') audioPlayer: ElementRef;
 
-  @Input() audio;
-
-  @Input() caracteristique: string;
-
   @Output() validation = new EventEmitter();
 
-  speaker1Nb: number = 0;
-  speaker2Nb: number = 0;
-  currentAudio: string = "";
+  speaker1Nb: number = 0; //Numéro du fichier audio affiché pour le locuteur 1
+  speaker2Nb: number = 0; //Numéro du fichier audio affiché pour le locuteur 1
+  currentAudio: string = ""; //fichier audio actuellement chargé dans le lecteur
 
-  _speaker1: boolean = false;
-  _speaker2: boolean = false;
+  _speaker1: boolean = false; // Le locuteur 1 est selectionné
+  _speaker2: boolean = false; // Le locuteur 2 est selectionné
 
-  spk1_on: boolean = false;
-  spk2_on: boolean = false;
+  spk1_on: boolean = false; // Le locuteur 1 est actuellement chargé dans le lecteur
+  spk2_on: boolean = false; // Le locuteur 2 est actuellement chargé dans le lecteur
 
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.audioPlayer);
-  }
+  ngOnInit() { }
 
+  // Sélection d'un bouton -> choix de l'utilisateur
   select(n) {
     if (n==1) {
       this._speaker1 = !this._speaker1;
@@ -47,17 +44,20 @@ export class ComparisonComponent implements OnInit {
     }
   }
 
+  // Chargement du fichier demandé, si nécessaire,  puis mise en play ou pause du lecteur.
   play(who) {
     let path;
     if (who == "demo") {
-      path = this.audio.main;
+      path = this.question.audio.audioPath;
       this.spk1_on = false;
       this.spk2_on = false;
-    } else if (who == "speaker1") {
-      path = this.audio.speaker1[this.speaker1Nb];
+    }
+    else if (who == "speaker1") {
+      path = this.question.speaker1.audiosPath[this.speaker1Nb];
       this.spk1_on = !this.spk1_on;
-    } else if (who == "speaker2") {
-      path = this.audio.speaker2[this.speaker2Nb];
+    }
+    else if (who == "speaker2") {
+      path = this.question.speaker2.audiosPath[this.speaker2Nb];
       this.spk2_on = !this.spk2_on;
     }
     let paused = this.audioPlayer.nativeElement.paused;
@@ -71,40 +71,42 @@ export class ComparisonComponent implements OnInit {
     }
   }
 
+  // Changement d'audio sur un speaker
   next(who) {
     if (who == "speaker1") {
-      this.speaker1Nb = (this.speaker1Nb+1)%this.audio.speaker1.length;
+      this.speaker1Nb = (this.speaker1Nb+1)%this.question.speaker1.audiosPath.length;
     } else if (who == "speaker2") {
-      this.speaker2Nb = (this.speaker2Nb+1)%this.audio.speaker2.length;
+      this.speaker2Nb = (this.speaker2Nb+1)%this.question.speaker2.audiosPath.length;
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);
     }
   }
-
   previous(who) {
     if (who == "speaker1") {
-      this.speaker1Nb = (this.speaker1Nb-1)%this.audio.speaker1.length;
+      this.speaker1Nb = (this.speaker1Nb-1)%this.question.speaker1.audiosPath.length;
     } else if (who == "speaker2") {
-      this.speaker2Nb = (this.speaker2Nb-1)%this.audio.speaker2.length;
+      this.speaker2Nb = (this.speaker2Nb-1)%this.question.speaker2.audiosPath.length;
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);
     }
   }
 
+  // Changement du style du locuteur sélectionné -> visibilité de la sélection
   get speaker1Style() {
     if (this._speaker1) {
       return {'background-color': "#64dd17"};
     }
   }
-
   get speaker2Style() {
     if (this._speaker2) {
       return {'background-color': "#64dd17"};
     }
   }
 
+  // TODO : fix issue
+  // Récupère les données de temps du fichier lu pour gérer l'affichage du slider
   get duration() {
     return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.duration;
   }
@@ -115,11 +117,15 @@ export class ComparisonComponent implements OnInit {
     return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.paused;
   }
 
-  get isCaracteristique() {
-    return this.caracteristique != undefined;
-  }
-
-  validate(event) {
-    this.validation.emit(event);
+  validate() {
+    if (this._speaker1) {
+      this.validation.emit('speaker 1');
+    }
+    else if (this._speaker2) {
+      this.validation.emit('speaker 2');
+    }
+    else {
+      this.validation.emit('pass');
+    }
   }
 }

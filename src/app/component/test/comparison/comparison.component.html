@@ -1,5 +1,5 @@
 
-<audio #audioPlayer [src]="currentAudio"></audio>
+<audio #audioPlayer [src]="'assets/audio/'+currentAudio"></audio>
 
 <div class="{{comparisonClass}} content">
   <h1>Question {{num}} / {{nbQuestTot}}</h1>
@@ -20,7 +20,7 @@
 
 
     <div class="choice">
-      <span *ngIf="isCaracteristique" If>{{caracteristique}} 1</span>
+      <span *ngIf="isCaracteristique" If>{{question.carac1.caracName}} 1</span>
       <span *ngIf="!isCaracteristique">Locuteur 1</span>
       <button mat-button class="mat-elevation-z6 img"
               [ngStyle]="speaker1Style"
@@ -60,7 +60,7 @@
 
 
     <div class="choice">
-      <span *ngIf="isCaracteristique" If>{{caracteristique}} 1</span>
+      <span *ngIf="isCaracteristique" If>{{question.carac2.caracName}} 1</span>
       <span *ngIf="!isCaracteristique">Locuteur 1</span>
       <button mat-button class="mat-elevation-z6 img"
               [ngStyle]="speaker2Style"
@@ -100,8 +100,7 @@
 
 
   <button mat-raised-button class="validate-button"
-          [disabled]="!(_speaker2 || _speaker1)"
-          (click)="validate($event)">
+          (click)="validate()">
     Valider
   </button>
 </div>

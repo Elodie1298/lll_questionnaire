@@ -4,52 +4,77 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UtilService {
-  private _questionTemplates = new Map();
-  get questionTemplates(): Map<any, any> {
-    return this._questionTemplates;
-  }
+  static questionTemplates = new Map();
 
-  private _testTemplates = new Map();
-  get testTemplates(): Map<any, any> {
-    return this._testTemplates;
-  }
+  static testTemplates = new Map();
 
-  private _types: Array<string> = ['CC','CL','VC','VL','IC'];
-  get types(): Array<string> {
-    return this._types;
-  }
+  static types: Array<string> = ['CC','CL','VC','VL','IC'];
+
+  static questions;
 
   private _questionsDone: Array<Number> = new Array<Number>();
+  static currentAnswer : Map<string, any>;
 
-  constructor() {
-    this._questionTemplates.set('CL', 4);
-    this._questionTemplates.set('CC', 2);
-    this._questionTemplates.set('VL', 2);
-    this._questionTemplates.set('VC', 3);
-    this._questionTemplates.set('IC', 1);
 
-    this._testTemplates.set('CL', 4);
-    this._testTemplates.set('CC', 3);
-    this._testTemplates.set('VL', 3);
-    this._testTemplates.set('VC', 3);
-    this._testTemplates.set('IC', 3);
+  constructor() {}
+
+  static init() {
+    UtilService.questionTemplates.set('CL', 4);
+    UtilService.questionTemplates.set('CC', 3);
+    UtilService.questionTemplates.set('VL', 2);
+    UtilService.questionTemplates.set('VC', 3);
+    UtilService.questionTemplates.set('IC', 1);
+
+    UtilService.testTemplates.set('CL', 3);
+    // UtilService.testTemplates.set('CL', 4);
+    UtilService.testTemplates.set('CC', 3);
+    // UtilService.testTemplates.set('CC', 4);
+    UtilService.testTemplates.set('VL', 3);
+    UtilService.testTemplates.set('VC', 4);
+    UtilService.testTemplates.set('IC', 3);
   }
 
   // type is CC,CL,VC,VL or IC
-  getTestTemplate(type: string): string {
+  static getTestTemplate(question): string {
+    let type = this.getType(question);
     if (this.types.indexOf(type)>-1) {
-      return 'T_'+type+'_'+this.testTemplates.get(type);
+      return 'T_'+type+'_'+
+        (Math.floor(Math.random()*this.testTemplates.get(type))+1);
     }
   }
 
   // type is CC,CL,VC,VL or IC
-  getQuestionTemplate(type: string): string {
+  static getQuestionTemplate(question): string {
+    let type = this.getType(question);
     if (this.types.indexOf(type)>-1) {
-      return 'T_'+type+'_'+this.questionTemplates.get(type);
+      return 'T_'+type+'_'+
+        (Math.floor(Math.random()*this.questionTemplates.get(type))+1);
     }
   }
 
   addQuestion(id: number) {
     this._questionsDone.push(id);
+  }
+
+  private static getType(question) {
+    let type: string;
+    if (question.speaker1 != null) {
+      if (question.speaker2 != null) {
+        type = 'CL';
+      } else {
+        type = 'VL';
+      }
+    }
+    else if (question.carac1 != null) {
+      if (question.carac2 != null) {
+        type = 'CC';
+      } else {
+        type = 'VC';
+      }
+    }
+    else {
+      type = 'IC';
+    }
+    return type;
   }
 }

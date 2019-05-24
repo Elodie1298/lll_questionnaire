@@ -3,6 +3,7 @@
 <app-yesno
   [num]="id" [nbQuestTot]="nbQuestTot"
   *ngIf="yesno"
+  (validation)="next($event)"
 ></app-yesno>
 
 <app-compar2
@@ -10,15 +11,18 @@
   [isCaracteristique]="(typeTemplate=='CC' && nbTemplate==3) || typeTemplate=='IL'"
   [isSpeaker]="typeTemplate=='CL'"
   *ngIf="compar2"
+  (validation)="next($event)"
 ></app-compar2>
 
 <app-utility
   [num]="id" [nbQuestTot]="nbQuestTot"
   *ngIf="utility"
+  (validation)="next($event)"
 ></app-utility>
 
 <app-compar3
   [num]="id" [nbQuestTot]="nbQuestTot"
   *ngIf="compar3"
   [isRecord]="typeTemplate=='CL'"
+  (validation)="next($event)"
 ></app-compar3>

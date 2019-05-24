@@ -1,4 +1,4 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import {FormControl} from '@angular/forms';
 export class YesnoComponent implements OnInit {
   @Input() num;
   @Input() nbQuestTot;
+
+  @Output() validation = new EventEmitter();
 
   selected: string;
 
@@ -54,7 +56,9 @@ export class YesnoComponent implements OnInit {
   }
 
   validate() {
-    console.log(this.selected);
-    console.log(this.explanation.value);
+    this.validation.emit({
+      selected: this.selected,
+      explanation: this.explanation.value
+    });
   }
 }

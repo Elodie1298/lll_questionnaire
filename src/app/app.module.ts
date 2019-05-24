@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import {
-  MatButtonModule, MatCardModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule,
   MatFormFieldModule,
   MatInputModule,
   MatRadioModule,
@@ -30,6 +30,7 @@ import { YesnoComponent } from './component/question/yesno/yesno.component';
 import { Compar2Component } from './component/question/compar2/compar2.component';
 import { UtilityComponent } from './component/question/utility/utility.component';
 import { Compar3Component } from './component/question/compar3/compar3.component';
+import { IdentificationComponent } from './component/test/identification/identification.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     YesnoComponent,
     Compar2Component,
     UtilityComponent,
-    Compar3Component
+    Compar3Component,
+    IdentificationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatSliderModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule
   ],
   providers: [
     HttpClientModule,

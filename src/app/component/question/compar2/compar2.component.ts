@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-compar2',
@@ -10,6 +10,8 @@ export class Compar2Component implements OnInit {
   @Input() nbQuestTot;
   @Input() isCaracteristique: boolean;
   @Input() isSpeaker: boolean;
+
+  @Output() validation = new EventEmitter();
 
   selected: number;
 
@@ -40,6 +42,8 @@ export class Compar2Component implements OnInit {
   }
 
   validate() {
-    console.log(this.selected);
+    this.validation.emit({
+      selected: this.selected
+    });
   }
 }

@@ -1,0 +1,72 @@
+/* Comparison 1 */
+.identification {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.identification div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.identification span {
+  width: 80%;
+}
+.identification button.record-button {
+  background-color: #f5f5f5;
+  margin-top: 3em;
+  margin-bottom: 5em;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border: none;
+}
+.identification button.record-button mat-icon {
+  display: none;
+}
+.identification button.record-button mat-icon.volume_up {
+  font-size: 40px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-block;
+}
+.identification .caracs {
+  margin: 15px 0;
+  width: 40%;
+}
+.identification mat-checkbox, .identification .caracs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.identification .validate-button {
+  margin: 25px 0;
+  background-color: #80cbc4;
+}
+
+.identification-1 .mat-fab.validate-button,
+.identification-3 .mat-fab.validate-button {
+  display: none;
+}
+.identification-2 .mat-raised-button.validate-button {
+  display: none;
+}
+
+.identification-3>div {
+  width: 60%;
+  min-width: 550px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.identification-3>div>div:first-child {
+  border-right-style: solid;
+  border-right-color: #424242;
+  border-right-width: 1px;
+}
+.identification-3 .caracs{
+  flex-direction: column;
+}

@@ -4,7 +4,7 @@ html {
   font-family: Roboto;
 }
 
-body, app-comparison {
+body, app-comparison, app-identification {
   margin: 0;
 }
 
@@ -37,7 +37,7 @@ mat-radio-button {
 }
 
 .choice>span,
-app-comparison, app-verification,
+app-comparison, app-verification, app-identification
 app-yesno, app-compar2, app-utility, app-compar3 {
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@ app-yesno, app-compar2, app-utility, app-compar3 {
   align-items: center;
 }
 
-app-comparison, app-verification,
+app-comparison, app-verification, app-identification
 app-yesno, app-compar2, app-utility, app-compar3 {
   width: 100%;
 }

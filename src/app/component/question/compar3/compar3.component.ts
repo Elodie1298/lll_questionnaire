@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-compar3',
@@ -11,6 +11,8 @@ export class Compar3Component implements OnInit {
 
   @Input() isRecord;
 
+  @Output() validation = new EventEmitter();
+
   selected: number;
 
   constructor() { }
@@ -22,8 +24,11 @@ export class Compar3Component implements OnInit {
     this.selected = (this.selected==n)?undefined:n;
   }
 
+
   validate() {
-    console.log(this.selected);
+    this.validation.emit({
+      selected: this.selected
+    });
   }
 
 }

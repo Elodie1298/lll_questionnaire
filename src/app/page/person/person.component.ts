@@ -65,7 +65,7 @@ export class PersonComponent implements OnInit {
     //   this.incorrect = true;
     // }
 
-    this.router.navigateByUrl("test/0")
+    this.router.navigateByUrl("test/1")
       .catch(e => console.log(e));
   }
 

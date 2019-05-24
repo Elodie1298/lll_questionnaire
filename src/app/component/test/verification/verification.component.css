@@ -1,8 +1,10 @@
 /* Verification*/
 .verification {
+  min-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
 }
 .verification span {
   width: 100%;
@@ -11,9 +13,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 80%;
 }
 .verification .col {
+  min-width: 230px;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -51,7 +55,8 @@
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  width: 176px;
+  min-width: 176px;
+  width: 100%;
 }
 .verification .choice img {
   width: 128px;
@@ -100,7 +105,7 @@
   display: none;
 }
 
-/* Verificatio 3 */
+/* Verification 3 */
 .verification-3 .clear {
   background-color: #e53935;
   color: #fafafa;
@@ -111,4 +116,23 @@
 }
 .verification-3 .carac1 {
   display: none;
+}
+.verification-3 button.img {
+  background-color: #f5f5f5 !important;
+  border: none;
+}
+
+.verification-4 .row .col {
+  align-items: flex-end;
+}
+.verification-4 .choice {
+  display: none;
+}
+.verification-4 .clear {
+  background-color: #e53935;
+  color: #fafafa;
+}
+.verification-4 .done {
+  background-color: #43a047;
+  color: #fafafa;
 }

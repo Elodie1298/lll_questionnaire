@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {DatabaseConnectService} from '../../service/database-connect.service';
+import {UtilService} from '../../service/util.service';
 
 @Component({
   selector: 'app-question',
@@ -10,9 +12,9 @@ export class QuestionComponent implements OnInit {
   id: number;
   nbQuestTot = 10;
 
-  template: string = "Q_IC_1";
-  static templates = new Map();
+  template;
 
+  question;
 
 
 
@@ -21,13 +23,15 @@ export class QuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
+    this.question = UtilService.questions[this.id];
+    this.template = UtilService.getQuestionTemplate(this.question);
   }
 
-  //TODO : redirect templates
+  // Redirection des templates suivant le type et le numéro
   get nbTemplate() {
     return Number.parseInt(this.template.charAt(5));
   }
-
   get typeTemplate() {
     console.log(this.template.substring(2,4));
     return this.template.substring(2,4);
@@ -57,5 +61,12 @@ export class QuestionComponent implements OnInit {
     return (
       (this.nbTemplate==1)
     );
+  }
+
+  next(ans) {
+    console.log(ans);
+    UtilService.currentAnswer.set('answer_interface_template', this.template);
+    UtilService.currentAnswer.set('answer_interface', ans);
+    window.location.assign('#/test/'+(this.id+1));
   }
 }

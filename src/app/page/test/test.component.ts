@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UtilService} from '../../service/util.service';
 
 @Component({
   selector: 'app-test',
@@ -10,48 +11,48 @@ export class TestComponent implements OnInit {
   id: number;
   nbQuestTot = 10;
 
-  template: string;
+  template;
 
-  audioComparaison = {
-    main: 'assets/audio/test.mp3',
-    speaker1: ['assets/audio/test.mp3', 'assets/audio/test2.wav'],
-    speaker2: ['assets/audio/test2.wav', 'assets/audio/test1.mp3']
-  };
-  audioVerification = {
-    main: 'assets/audio/test.mp3',
-    speaker: ['assets/audio/test.mp3', 'assets/audio/test2.wav']
-  };
+  question;
 
   private begin = new Date();
 
-  // caracteristique:string = undefined;
-  caracteristique:string = "Langue";
-
-  constructor(private route: ActivatedRoute,
-              private router: Router) {
+  constructor(private route: ActivatedRoute) {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit() {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
-    if (this.id == 0) {
-      this.caracteristique = undefined;
-    }
+    this.question = UtilService.questions[this.id];
+    this.template = UtilService.getTestTemplate(this.question);
   }
 
   get time() {
     return (new Date()).getSeconds()-this.begin.getSeconds();
   }
-  next(event) {
+  next(ans) {
+    console.log('ans:', ans);
     console.log('time:',this.time);
-    window.location.assign('#/test/'+(this.id+1));
+    UtilService.currentAnswer = new Map<string, any>();
+    UtilService.currentAnswer.set('answer_text', ans);
+    UtilService.currentAnswer.set('answer_template', this.template);
+    UtilService.currentAnswer.set('answer_time', this.time);
+    window.location.assign('#/question/'+(this.id));
   }
 
   get isComparison() {
     return this.template.charAt(2)=="C";
   }
+  get isVerification() {
+    return this.template.charAt(2)=="V";
+  }
+  get isIdentification() {
+    return this.template.charAt(2)=="I";
+  }
+  get isCaracteristique() {
+    return (this.template.charAt(3)=='C');
+  }
   get nbTemplate() {
     return Number.parseInt(this.template.charAt(5));
   }
-
 }
