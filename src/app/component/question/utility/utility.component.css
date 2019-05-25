@@ -1,5 +1,4 @@
 .utility {
-  min-width: 550px;
   width: 50%;
 }
 .utility span {
@@ -38,4 +37,9 @@
 }
 .utility mat-radio-group {
   width: 80%;
+}
+@media(max-width: 500px) {
+  .utility {
+    width: 100%;
+  }
 }

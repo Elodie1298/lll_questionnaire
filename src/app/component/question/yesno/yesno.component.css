@@ -1,8 +1,8 @@
 .yesno {
-  width: 80%;
+  width: 100%;
 }
 .yesno span {
-  width: 100%;
+  width: 80%;
   margin-top: 15px;
 }
 .yesno .row {

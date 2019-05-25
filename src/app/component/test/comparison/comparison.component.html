@@ -20,7 +20,7 @@
 
 
     <div class="choice">
-      <span *ngIf="isCaracteristique" If>{{question.carac1.caracName}} 1</span>
+      <span *ngIf="isCaracteristique" If>{{question.carac1.caracName}}</span>
       <span *ngIf="!isCaracteristique">Locuteur 1</span>
       <button mat-button class="mat-elevation-z6 img"
               [ngStyle]="speaker1Style"
@@ -39,18 +39,6 @@
         <button mat-button (click)="previous('speaker1')">
           <mat-icon>skip_previous</mat-icon>
         </button>
-        <button mat-button class="play-sound"
-                (click)="play('speaker1')"
-                *ngIf="!spk1_on">
-          <mat-icon>play_arrow</mat-icon>
-        </button>
-        <mat-slider
-          *ngIf="spk1_on"
-          disabled="true"
-          min="0"
-          [max]="duration"
-          [value]="currentTime"
-        ></mat-slider>
         <button mat-button (click)="next('speaker1')">
           <mat-icon>skip_next</mat-icon>
         </button>
@@ -60,8 +48,8 @@
 
 
     <div class="choice">
-      <span *ngIf="isCaracteristique" If>{{question.carac2.caracName}} 1</span>
-      <span *ngIf="!isCaracteristique">Locuteur 1</span>
+      <span *ngIf="isCaracteristique" If>{{question.carac2.caracName}}</span>
+      <span *ngIf="!isCaracteristique">Locuteur 2</span>
       <button mat-button class="mat-elevation-z6 img"
               [ngStyle]="speaker2Style"
               (click)="select(2)"
@@ -79,18 +67,6 @@
         <button mat-button (click)="previous('speaker2')">
           <mat-icon>skip_previous</mat-icon>
         </button>
-        <button mat-button class="play-sound"
-                (click)="play('speaker2')"
-                *ngIf="!spk2_on">
-          <mat-icon>play_arrow</mat-icon>
-        </button>
-        <mat-slider
-          *ngIf="spk2_on"
-          disabled="true"
-          min="0"
-          [max]="duration"
-          [value]="currentTime"
-        ></mat-slider>
         <button mat-button (click)="next('speaker2')">
           <mat-icon>skip_next</mat-icon>
         </button>
@@ -102,5 +78,9 @@
   <button mat-raised-button class="validate-button"
           (click)="validate()">
     Valider
+  </button>
+  <button mat-fab class="validate-button"
+          (click)="validate()">
+    <mat-icon>done</mat-icon>
   </button>
 </div>

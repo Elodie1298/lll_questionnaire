@@ -43,9 +43,7 @@ export class IdentificationComponent implements OnInit {
     if (this.currentAudio != path) {
       this.currentAudio = path;
     }
-    if (paused || current!=this.currentAudio) {
-      setTimeout(() => this.audioPlayer.nativeElement.play(), 500);
-    }
+    setTimeout(() => this.audioPlayer.nativeElement.play(), 500);
   }
 
   validate() {

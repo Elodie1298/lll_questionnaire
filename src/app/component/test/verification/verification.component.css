@@ -1,13 +1,9 @@
 /* Verification*/
 .verification {
-  min-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-}
-.verification span {
-  width: 100%;
 }
 .verification .row {
   display: flex;
@@ -15,6 +11,9 @@
   justify-content: space-between;
   flex-wrap: wrap;
   width: 80%;
+}
+.verification-4 .row {
+  justify-content: center;
 }
 .verification .col {
   min-width: 230px;
@@ -56,7 +55,6 @@
   align-items: center;
   position: relative;
   min-width: 176px;
-  width: 100%;
 }
 .verification .choice img {
   width: 128px;
@@ -80,6 +78,9 @@
 .verification button.play-sound:hover {
   background-color: #eee;
   transition: 250ms;
+}
+.verification .return button{
+  margin-bottom: 10px;
 }
 
 /* Verification 1*/
@@ -122,8 +123,8 @@
   border: none;
 }
 
-.verification-4 .row .col {
-  align-items: flex-end;
+.verification-4 .row .col:last-child {
+  display: none;
 }
 .verification-4 .choice {
   display: none;
@@ -135,4 +136,14 @@
 .verification-4 .done {
   background-color: #43a047;
   color: #fafafa;
+}
+
+@media(max-width: 500px) {
+  .verification .return {
+    width: fit-content;
+  }
+
+  .verification-3 .return, .verification-2 .return {
+    width: 100% !important;
+  }
 }

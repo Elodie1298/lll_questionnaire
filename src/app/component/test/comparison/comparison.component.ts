@@ -53,11 +53,19 @@ export class ComparisonComponent implements OnInit {
       this.spk2_on = false;
     }
     else if (who == "speaker1") {
-      path = this.question.speaker1.audiosPath[this.speaker1Nb];
+      if (this.isCaracteristique) {
+        path = this.question.carac1.audiosPath[this.speaker1Nb];
+      } else {
+        path = this.question.speaker1.audiosPath[this.speaker1Nb];
+      }
       this.spk1_on = !this.spk1_on;
     }
     else if (who == "speaker2") {
-      path = this.question.speaker2.audiosPath[this.speaker2Nb];
+      if (this.isCaracteristique) {
+        path = this.question.carac2.audiosPath[this.speaker1Nb];
+      } else {
+        path = this.question.speaker2.audiosPath[this.speaker1Nb];
+      }
       this.spk2_on = !this.spk2_on;
     }
     let paused = this.audioPlayer.nativeElement.paused;
@@ -74,23 +82,35 @@ export class ComparisonComponent implements OnInit {
   // Changement d'audio sur un speaker
   next(who) {
     if (who == "speaker1") {
-      this.speaker1Nb = (this.speaker1Nb+1)%this.question.speaker1.audiosPath.length;
+      if (this.isCaracteristique) {
+        this.speaker1Nb = (this.speaker1Nb+1)%this.question.carac1.audiosPath.length;
+      } else {
+        this.speaker1Nb = (this.speaker1Nb+1)%this.question.speaker1.audiosPath.length;
+      }
     } else if (who == "speaker2") {
-      this.speaker2Nb = (this.speaker2Nb+1)%this.question.speaker2.audiosPath.length;
+      if (this.isCaracteristique) {
+        this.speaker2Nb = (this.speaker2Nb+1)%this.question.carac2.audiosPath.length;
+      } else {
+        this.speaker2Nb = (this.speaker2Nb+1)%this.question.speaker2.audiosPath.length;
+      }
     }
-    if (!this.audioPlayer.nativeElement.paused) {
-      this.play(who);
-    }
+    this.play(who);
   }
   previous(who) {
     if (who == "speaker1") {
-      this.speaker1Nb = (this.speaker1Nb-1)%this.question.speaker1.audiosPath.length;
+      if (this.isCaracteristique) {
+        this.speaker1Nb = (this.speaker1Nb-1)%this.question.carac1.audiosPath.length;
+      } else {
+        this.speaker1Nb = (this.speaker1Nb-1)%this.question.speaker1.audiosPath.length;
+      }
     } else if (who == "speaker2") {
-      this.speaker2Nb = (this.speaker2Nb-1)%this.question.speaker2.audiosPath.length;
+      if (this.isCaracteristique) {
+        this.speaker2Nb = (this.speaker2Nb-1)%this.question.carac2.audiosPath.length;
+      } else {
+        this.speaker2Nb = (this.speaker2Nb-1)%this.question.speaker2.audiosPath.length;
+      }
     }
-    if (!this.audioPlayer.nativeElement.paused) {
-      this.play(who);
-    }
+    this.play(who);
   }
 
   // Changement du style du locuteur sélectionné -> visibilité de la sélection
@@ -105,24 +125,19 @@ export class ComparisonComponent implements OnInit {
     }
   }
 
-  // TODO : fix issue
-  // Récupère les données de temps du fichier lu pour gérer l'affichage du slider
-  get duration() {
-    return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.duration;
-  }
-  get currentTime() {
-    return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.currentTime;
-  }
-  get paused() {
-    return (this.audioPlayer==undefined)?0: this.audioPlayer.nativeElement.paused;
-  }
-
   validate() {
     if (this._speaker1) {
-      this.validation.emit('speaker 1');
-    }
-    else if (this._speaker2) {
-      this.validation.emit('speaker 2');
+      if (this.isCaracteristique) {
+        this.validation.emit('carac 1');
+      } else {
+        this.validation.emit('speaker 1');
+      }
+    } else if (this._speaker2) {
+      if (this.isCaracteristique) {
+        this.validation.emit('carac 2');
+      } else {
+        this.validation.emit('speaker 2');
+      }
     }
     else {
       this.validation.emit('pass');

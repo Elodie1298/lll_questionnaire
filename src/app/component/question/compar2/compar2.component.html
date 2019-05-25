@@ -13,64 +13,14 @@
     </button>
   </div>
 
-  <span *ngIf="!isCaracteristique && !isSpeaker">Quel design trouvez-vous le plus intuitif pour l'enregistrement</span>
-  <div *ngIf="!isCaracteristique && !isSpeaker" class="row">
+  <span *ngIf="!isCaracteristique">Quel design trouvez-vous le plus intuitif pour l'enregistrement</span>
+  <div *ngIf="!isCaracteristique" class="row">
     <button mat-fab class="record-button play_arrow mat-elevation-z4" (click)="select(0)">
       <mat-icon>play_arrow</mat-icon>
     </button>
     <button mat-fab class="record-button volume_up mat-elevation-z4" (click)="select(1)">
       <mat-icon>volume_up</mat-icon>
     </button>
-  </div>
-
-  <span *ngIf="!isCaracteristique && isSpeaker">Quel design trouvez-vous le plus intuitif pour changer l'échantillon du locuteur ?</span>
-  <div *ngIf="!isCaracteristique && isSpeaker" class="row">
-    <div class="choice">
-      <button mat-button class="mat-elevation-z6 img"
-              [ngStyle]="speaker1Style"
-              (click)="select(0)">
-        <img src="assets/img/icons/locuteur.png">
-      </button>
-      <button mat-mini-fab class="play-sound mat-elevation-z0">
-        <mat-icon>volume_up</mat-icon>
-      </button>
-      <div class="skip">
-        <button mat-button>
-          <mat-icon>skip_previous</mat-icon>
-        </button>
-        <button mat-button>
-          <mat-icon>skip_next</mat-icon>
-        </button>
-      </div>
-    </div>
-    <div class="choice">
-      <button mat-button class="mat-elevation-z6 img"
-              [ngStyle]="speaker2Style"
-              (click)="select(1)">
-        <img src="assets/img/icons/locuteur.png">
-      </button>
-      <div class="skip second">
-        <button mat-button>
-          <mat-icon>skip_previous</mat-icon>
-        </button>
-        <button mat-button class="play-sound"
-                (click)="slider_on = !slider_on"
-                *ngIf="!slider_on">
-          <mat-icon>play_arrow</mat-icon>
-        </button>
-        <mat-slider
-          (click)="slider_on = !slider_on"
-          *ngIf="slider_on"
-          disabled="true"
-          min="0"
-          max="100"
-          value="33"
-        ></mat-slider>
-        <button mat-button>
-          <mat-icon>skip_next</mat-icon>
-        </button>
-      </div>
-    </div>
   </div>
 
   <button mat-raised-button class="validate" (click)="validate()">

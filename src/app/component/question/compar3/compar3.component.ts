@@ -15,6 +15,9 @@ export class Compar3Component implements OnInit {
 
   selected: number;
 
+  _selectedStyle = {'background-color': 'a5d6a7'};
+  _deselectedStyle = {'background-color': 'cfd8dc'};
+
   constructor() { }
 
   ngOnInit() {
@@ -31,4 +34,12 @@ export class Compar3Component implements OnInit {
     });
   }
 
+  getStyle(n) {
+    if (this.selected!=undefined && this.selected!=n) {
+      return this._deselectedStyle
+    }
+    else {
+      return this._selectedStyle;
+    }
+  }
 }

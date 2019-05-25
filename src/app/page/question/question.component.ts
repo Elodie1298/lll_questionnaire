@@ -25,8 +25,10 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
-    this.question = UtilService.questions[this.id];
+    this.question = UtilService.questions[this.id-1];
     this.template = UtilService.getQuestionTemplate(this.question);
+    //TODO: delete
+    this.template = "Q_VC_1";
   }
 
   // Redirection des templates suivant le type et le numéro
@@ -34,7 +36,6 @@ export class QuestionComponent implements OnInit {
     return Number.parseInt(this.template.charAt(5));
   }
   get typeTemplate() {
-    console.log(this.template.substring(2,4));
     return this.template.substring(2,4);
   }
 
@@ -46,14 +47,14 @@ export class QuestionComponent implements OnInit {
   }
   get utility() {
     return (
-      (this.nbTemplate==4) &&
+      (this.nbTemplate==3) &&
       (this.typeTemplate=='CL')
     );
   }
   get compar2() {
     return (
       ((this.nbTemplate==3) &&
-        (this.typeTemplate=='CL' || this.typeTemplate=='CC')) ||
+        (this.typeTemplate=='CC')) ||
       ((this.nbTemplate==2) &&
         (this.typeTemplate=='VC') || this.typeTemplate=='CC')
     );
@@ -70,7 +71,7 @@ export class QuestionComponent implements OnInit {
       UtilService.currentAnswer.set('answer_interface', ans);
       UtilService.currentAnswer.set('user_id', UtilService.userId);
       UtilService.currentAnswer.set('question_id', +this.question.questionId);
-      UtilService.currentAnswer.set('answer_extra_log', null);
+      UtilService.currentAnswer.set('answer_extra_log', "null");
       resolve(true);
     })
       .then(_ => this.dbConnect.postAnswer())

@@ -52,27 +52,27 @@
    </span>
    <span *ngIf="verificationClass=='verification-4'">L'enregistrement contient la caractéristique {{question.carac1.caracName}} ?</span>
    <div class="row return" *ngIf="verificationClass!='verification-1'">
-      <button mat-fab class="clear" (click)="validate('oui')">
-        <mat-icon>clear</mat-icon>
-      </button>
-      <button mat-fab class="done" (click)="validate('non')">
-        <mat-icon>done</mat-icon>
-      </button>
-      <button mat-fab color="light" (click)="validate('pass')">
-        Passer
-      </button>
+     <button mat-fab class="clear" (click)="validate('non')">
+       <mat-icon>clear</mat-icon>
+     </button>
+     <button mat-fab color="light" (click)="validate('pass')">
+       Passer
+     </button>
+     <button mat-fab class="done" (click)="validate('oui')">
+       <mat-icon>done</mat-icon>
+     </button>
     </div>
    <div class="row return" *ngIf="verificationClass=='verification-1'">
-      <button mat-raised-button (click)="validate('oui')">
-        Oui
-      </button>
-      <button mat-raised-button (click)="validate('non')">
-        Non
-      </button>
-      <button mat-raised-button (click)="validate('pass')">
-        Passer
-      </button>
-    </div>
+     <button mat-raised-button (click)="validate('non')">
+       Non
+     </button>
+     <button mat-raised-button (click)="validate('pass')">
+       Passer
+     </button>
+     <button mat-raised-button (click)="validate('oui')">
+       Oui
+     </button>
+   </div>
 
  </div>
 </div>

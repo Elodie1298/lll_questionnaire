@@ -11,12 +11,6 @@
   flex-direction: column;
   align-items: center;
 }
-.identification>div {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 .identification span {
   width: 45%;
 }
@@ -64,7 +58,6 @@
 
 .identification-3>div {
   width: 60%;
-  min-width: 550px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -76,4 +69,17 @@
 }
 .identification-3 .caracs{
   flex-direction: column;
+}
+
+
+@media(max-width: 500px) {
+  .identification span, .identification .caracs {
+    width: 80%;
+  }
+  .identification-3>div {
+    flex-direction: column;
+  }
+  .identification-3>div>div{
+    border: none;
+  }
 }

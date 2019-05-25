@@ -12,11 +12,11 @@ export class TestComponent implements OnInit {
   id: number;
   nbQuestTot = 10;
 
-  template = "T_IC_3";
+  template;
 
   question;
 
-  private begin;
+  private begin: Date;
 
   constructor(private route: ActivatedRoute,
               private dbConnect: DatabaseConnectService) {
@@ -25,19 +25,18 @@ export class TestComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
-    if (UtilService.questions == undefined) {
-      this.dbConnect.getQuestionList()
-        .then((ans: any) => {
-          UtilService.questions = ans.res;
-        });
-    }
-    this.question = UtilService.questions[this.id];
+    this.question = UtilService.questions[this.id-1];
     this.template = UtilService.getTestTemplate(this.question);
+    //TODO: delete;
+    this.template = "T_VC_"+this.id;
     this.begin = new Date();
+    console.log(this.template);
   }
 
   get time() {
-    return (new Date()).getSeconds()-this.begin.getSeconds();
+    let now = new Date();
+    // @ts-ignore
+    return ((now - this.begin)/1000)-(now - this.begin)%1000;
   }
   next(ans) {
     console.log('ans:', ans);

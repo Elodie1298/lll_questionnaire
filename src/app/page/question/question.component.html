@@ -9,7 +9,6 @@
 <app-compar2
   [num]="id" [nbQuestTot]="nbQuestTot"
   [isCaracteristique]="(typeTemplate=='CC' && nbTemplate==3) || typeTemplate=='IL'"
-  [isSpeaker]="typeTemplate=='CL'"
   *ngIf="compar2"
   (validation)="next($event)"
 ></app-compar2>

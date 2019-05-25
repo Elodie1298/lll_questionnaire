@@ -21,7 +21,7 @@ export class UtilService {
   constructor() {}
 
   static init() {
-    UtilService.questionTemplates.set('CL', 4);
+    UtilService.questionTemplates.set('CL', 3);
     UtilService.questionTemplates.set('CC', 3);
     UtilService.questionTemplates.set('VL', 2);
     UtilService.questionTemplates.set('VC', 3);
@@ -49,7 +49,7 @@ export class UtilService {
   static getQuestionTemplate(question): string {
     let type = this.getType(question);
     if (this.types.indexOf(type)>-1) {
-      return 'T_'+type+'_'+
+      return 'Q_'+type+'_'+
         (Math.floor(Math.random()*this.questionTemplates.get(type))+1);
     }
   }

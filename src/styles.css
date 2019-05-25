@@ -53,3 +53,11 @@ app-yesno, app-compar2, app-utility, app-compar3 {
 .validate {
   margin-bottom: 20px !important;
 }
+
+.mat-radio-label {
+  white-space: normal;
+}
+
+span {
+  text-align: center;
+}

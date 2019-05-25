@@ -9,13 +9,10 @@ export class Compar2Component implements OnInit {
   @Input() num;
   @Input() nbQuestTot;
   @Input() isCaracteristique: boolean;
-  @Input() isSpeaker: boolean;
 
   @Output() validation = new EventEmitter();
 
   selected: number;
-
-  slider_on = false;
 
   constructor() { }
 
@@ -27,17 +24,6 @@ export class Compar2Component implements OnInit {
       this.selected = undefined;
     } else {
       this.selected = n;
-    }
-  }
-
-  get speaker1Style() {
-    if (this.selected == 0) {
-      return {'background-color': "#64dd17"};
-    }
-  }
-  get speaker2Style() {
-    if (this.selected == 1) {
-      return {'background-color': "#64dd17"};
     }
   }
 

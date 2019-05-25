@@ -37,7 +37,11 @@ export class VerificationComponent implements OnInit {
       this.spk1_on = false;
     }
     else if (who == "speaker1") {
-      path = this.question.speaker1.audiosPath[this.speaker1Nb];
+      if (this.isCaracteristique) {
+        path = this.question.carac1.audiosPath[this.speaker1Nb];
+      } else {
+        path = this.question.speaker1.audiosPath[this.speaker1Nb];
+      }
       this.spk1_on = !this.spk1_on;
     }
     let paused = this.audioPlayer.nativeElement.paused;
@@ -54,7 +58,11 @@ export class VerificationComponent implements OnInit {
   // Changement d'audio sur un speaker
   next(who) {
     if (who == "speaker1") {
-      this.speaker1Nb = (this.speaker1Nb+1)%this.question.speaker1.audiosPath.length;
+      if (this.isCaracteristique) {
+        this.speaker1Nb = (this.speaker1Nb+1)%this.question.carac1.audiosPath.length;
+      } else {
+        this.speaker1Nb = (this.speaker1Nb+1)%this.question.speaker1.audiosPath.length;
+      }
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);
@@ -62,7 +70,11 @@ export class VerificationComponent implements OnInit {
   }
   previous(who) {
     if (who == "speaker1") {
-      this.speaker1Nb = (this.speaker1Nb-1)%this.question.speaker1.audiosPath.length;
+      if (this.isCaracteristique) {
+        this.speaker1Nb = (this.speaker1Nb-1)%this.question.carac1.audiosPath.length;
+      } else {
+        this.speaker1Nb = (this.speaker1Nb-1)%this.question.speaker1.audiosPath.length;
+      }
     }
     if (!this.audioPlayer.nativeElement.paused) {
       this.play(who);
