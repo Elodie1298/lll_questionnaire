@@ -79,6 +79,7 @@
 }
 .compar3 mat-card {
   margin: 15px;
+  min-width: 230px;
 }
 .compar3 mat-card-content {
   display: flex;
@@ -109,9 +110,5 @@
   .compar3 .row {
     justify-content: space-between;
     width: 100%;
-  }
-
-  .compar3 mat-card {
-    width: 80%;
   }
 }

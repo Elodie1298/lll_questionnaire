@@ -24,7 +24,7 @@ export class UtilService {
     UtilService.questionTemplates.set('CL', 3);
     UtilService.questionTemplates.set('CC', 3);
     UtilService.questionTemplates.set('VL', 2);
-    UtilService.questionTemplates.set('VC', 3);
+    UtilService.questionTemplates.set('VC', 2);
     UtilService.questionTemplates.set('IC', 1);
 
     UtilService.testTemplates.set('CL', 3);

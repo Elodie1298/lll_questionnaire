@@ -8,7 +8,7 @@ body, app-comparison, app-identification {
   margin: 0;
 }
 
-app-home, app-person {
+app-home, app-person, app-ending {
   display: flex;
   flex-direction: column;
   align-items: center;

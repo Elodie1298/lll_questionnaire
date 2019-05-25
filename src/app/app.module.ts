@@ -31,12 +31,14 @@ import { Compar2Component } from './component/question/compar2/compar2.component
 import { UtilityComponent } from './component/question/utility/utility.component';
 import { Compar3Component } from './component/question/compar3/compar3.component';
 import { IdentificationComponent } from './component/test/identification/identification.component';
+import { EndingComponent } from './page/ending/ending.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path : 'person', component: PersonComponent},
   {path: 'test/:id', component: TestComponent},
-  {path: 'question/:id', component: QuestionComponent}
+  {path: 'question/:id', component: QuestionComponent},
+  {path: 'end', component: EndingComponent}
   ];
 
 @NgModule({
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     Compar2Component,
     UtilityComponent,
     Compar3Component,
-    IdentificationComponent
+    IdentificationComponent,
+    EndingComponent
   ],
   imports: [
     BrowserModule,

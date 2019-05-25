@@ -1,7 +1,7 @@
 
 <audio #audioPlayer [src]="'assets/audio/'+currentAudio"></audio>
 
-<div class="{{comparisonClass}} content">
+<div class="{{comparisonClass}} comparison content">
   <h1>Question {{num}} / {{nbQuestTot}}</h1>
 
 
@@ -14,7 +14,8 @@
 
 
 
-  <span>Sélectionnez le locuteur correspondant le plus à l'enregistrement :</span>
+  <span *ngIf="!isCaracteristique">Sélectionnez le locuteur correspondant le plus à l'enregistrement :</span>
+  <span *ngIf="isCaracteristique">Sélectionnez la caractéristique correspondant le plus à l'enregistrement :</span>
 
   <div class="choice-group">
 

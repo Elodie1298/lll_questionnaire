@@ -28,7 +28,13 @@ export class QuestionComponent implements OnInit {
     this.question = UtilService.questions[this.id-1];
     this.template = UtilService.getQuestionTemplate(this.question);
     //TODO: delete
-    this.template = "Q_VC_1";
+    if (this.typeTemplate[1] == 'L') {
+      this.template = "Q_VL_2";
+    } else if (this.typeTemplate[1] == 'C') {
+      this.template = "Q_VC_2";
+    }
+
+    console.log(this.template);
   }
 
   // Redirection des templates suivant le type et le numéro
@@ -77,6 +83,11 @@ export class QuestionComponent implements OnInit {
       .then(_ => this.dbConnect.postAnswer())
       .catch(e => console.log(e));
     console.log("Answer : ",UtilService.currentAnswer);
-    window.location.assign('#/test/'+(this.id+1));
+    if (this.id<10) {
+      window.location.assign('#/test/'+(this.id+1));
+    }
+    else {
+      window.location.assign('#/end');
+    }
   }
 }

@@ -27,16 +27,16 @@ export class TestComponent implements OnInit {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
     this.question = UtilService.questions[this.id-1];
     this.template = UtilService.getTestTemplate(this.question);
-    //TODO: delete;
-    this.template = "T_VC_"+this.id;
     this.begin = new Date();
     console.log(this.template);
   }
 
   get time() {
     let now = new Date();
-    // @ts-ignore
-    return ((now - this.begin)/1000)-(now - this.begin)%1000;
+    let time = (now.getHours() - this.begin.getHours())*3600;
+    time += (now.getMinutes() - this.begin.getMinutes())*60;
+    time += now.getSeconds() - this.begin.getSeconds();
+    return time;
   }
   next(ans) {
     console.log('ans:', ans);
