@@ -20,16 +20,19 @@ export class IdentificationComponent implements OnInit {
   currentAudio: string;
 
   carac = new Map();
-  // TODO : get real carac list
   caracs = [
-    "Langue",
-    "Genre",
-    "Age"
+    "Le locuteur est un homme",
+    "Le locuteur est une femme",
+    "Le locuteur est un enfant",
+    "Le locuteur est un adulte",
+    "La langue native est le français",
+    "La langue native est l'arabe"
   ];
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   // Chargement du fichier demandé, si nécessaire,  puis mise en play ou pause du lecteur.
   play(who) {

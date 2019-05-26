@@ -28,6 +28,11 @@ export class ComparisonComponent implements OnInit {
   spk1_on: boolean = false; // Le locuteur 1 est actuellement chargé dans le lecteur
   spk2_on: boolean = false; // Le locuteur 2 est actuellement chargé dans le lecteur
 
+  selectedStyle = {
+    'background-color': '#64dd17',
+    'border-color': '#64dd17'
+  };
+
   constructor() { }
 
   ngOnInit() { }
@@ -116,12 +121,12 @@ export class ComparisonComponent implements OnInit {
   // Changement du style du locuteur sélectionné -> visibilité de la sélection
   get speaker1Style() {
     if (this._speaker1) {
-      return {'background-color': "#64dd17"};
+      return this.selectedStyle;
     }
   }
   get speaker2Style() {
     if (this._speaker2) {
-      return {'background-color': "#64dd17"};
+      return this.selectedStyle;
     }
   }
 

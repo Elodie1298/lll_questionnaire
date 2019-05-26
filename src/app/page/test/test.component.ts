@@ -18,17 +18,18 @@ export class TestComponent implements OnInit {
 
   private begin: Date;
 
-  constructor(private route: ActivatedRoute,
-              private dbConnect: DatabaseConnectService) {
+  constructor(private route: ActivatedRoute) {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit() {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
+    if (UtilService.questions == undefined) {
+      window.location.assign("");
+    }
     this.question = UtilService.questions[this.id-1];
     this.template = UtilService.getTestTemplate(this.question);
     this.begin = new Date();
-    console.log(this.template);
   }
 
   get time() {

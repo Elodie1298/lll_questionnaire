@@ -14,6 +14,12 @@ export class Compar2Component implements OnInit {
 
   selected: number;
 
+  selectedStyle = {
+    'background-color': '#64dd17',
+    'border-color': '#64dd17',
+    'transition': '200ms'
+  };
+
   constructor() { }
 
   ngOnInit() {
@@ -24,6 +30,12 @@ export class Compar2Component implements OnInit {
       this.selected = undefined;
     } else {
       this.selected = n;
+    }
+  }
+
+  getStyle(n) {
+    if (this.selected==n) {
+      return this.selectedStyle;
     }
   }
 

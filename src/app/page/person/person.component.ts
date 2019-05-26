@@ -57,15 +57,14 @@ export class PersonComponent implements OnInit {
       })
         .then(res => {
           UtilService.userId = res.userId;
+          this.router.navigateByUrl("test/1")
+            .catch(e => console.log(e));
         })
         .catch(e => console.log(e));
     }
     else {
       this.incorrect = true;
     }
-
-    this.router.navigateByUrl("test/1")
-      .catch(e => console.log(e));
   }
 
 }

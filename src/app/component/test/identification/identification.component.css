@@ -73,6 +73,9 @@
 
 
 @media(max-width: 500px) {
+  .identification-3 {
+    width: 80%;
+  }
   .identification span, .identification .caracs {
     width: 80%;
   }
@@ -80,6 +83,6 @@
     flex-direction: column;
   }
   .identification-3>div>div{
-    border: none;
+    border: none !important;
   }
 }

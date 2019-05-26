@@ -14,7 +14,7 @@ export class UtilService {
 
   static userId: string = "5ce7b6295d70a";
 
-  private _questionsDone: Array<Number> = new Array<Number>();
+  private _questionsDone: Map<string, Array<number>> = new Map<string, Array<number>>();
   static currentAnswer : Map<string, any>;
 
 
@@ -54,8 +54,10 @@ export class UtilService {
     }
   }
 
-  addQuestion(id: number) {
-    this._questionsDone.push(id);
+  addQuestion(type: string, nb: number) {
+    if (this._questionsDone.get(type) == null) {
+      //TODO: implement random question WHICH DIDN'T GET OUT YET
+    }
   }
 
   private static getType(question) {

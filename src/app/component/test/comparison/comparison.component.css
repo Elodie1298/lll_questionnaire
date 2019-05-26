@@ -40,6 +40,8 @@
   margin-top: 10px;
   padding: 0;
   border-radius: 100px;
+  border-style: solid;
+  border-color: #607d8b;
 }
 .comparison-1 .choice img.carac2 {
   display: none;
@@ -128,10 +130,12 @@
   display: none;
 }
 .comparison-2 .choice button.img {
-  background-color: #626262;
+  background-color: #9e9e9e;
   margin-top: 10px;
   padding: 0;
   border-radius: 100px;
+  border-style: solid;
+  border-color: #9e9e9e;
 }
 .comparison-2 button.play-sound {
   position: absolute;
@@ -210,6 +214,8 @@
   margin-top: 10px;
   padding: 0;
   border-radius: 100px;
+  border-style: solid;
+  border-color: #607d8b;
 }
 .comparison-3 .choice img.carac2 {
   display: none;
@@ -269,4 +275,9 @@
 }
 .comparison-3 .mat-raised-button.validate-button {
   display: none;
+}
+@media(max-width: 500px) {
+  .comparison .row{
+    width: 80%;
+  }
 }

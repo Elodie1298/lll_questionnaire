@@ -12,11 +12,14 @@
   flex-wrap: wrap;
   width: 80%;
 }
-.verification .return {
-  width: 50%;
-}
 .verification-4 .row {
   justify-content: center;
+}
+.verification .return {
+  width: 50% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .verification .col {
   min-width: 230px;

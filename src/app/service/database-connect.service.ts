@@ -38,15 +38,10 @@ export class DatabaseConnectService {
       .toPromise();
   }
 
-  //TODO : uncomment following code and test json requests
-
   public getQuestionList() {
     return this.http.get(this.getQuestionListURL, {headers: this.headers})
       .toPromise()
   }
-
-
-  //TODO: treat request
 
   public postAnswer() {
     const answerData = new FormData();

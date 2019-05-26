@@ -15,8 +15,18 @@ export class Compar3Component implements OnInit {
 
   selected: number;
 
-  _selectedStyle = {'background-color': 'a5d6a7'};
-  _deselectedStyle = {'background-color': 'cfd8dc'};
+  _selectedStyle = {
+    'background-color': '#a5d6a7',
+    'transition': '200ms'
+  };
+  _deselectedStyle = {
+    'background-color': '#cfd8dc',
+    'transition': '200ms'
+  };
+  _unselectedStyle = {
+    'background-color': '#fff',
+    'transition': '200ms'
+  };
 
   constructor() { }
 
@@ -35,11 +45,14 @@ export class Compar3Component implements OnInit {
   }
 
   getStyle(n) {
-    if (this.selected!=undefined && this.selected!=n) {
-      return this._deselectedStyle
+    if (this.selected==undefined) {
+      return this._unselectedStyle;
+    }
+    else if (this.selected==n) {
+      return this._selectedStyle;
     }
     else {
-      return this._selectedStyle;
+      return this._deselectedStyle
     }
   }
 }

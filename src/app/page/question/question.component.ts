@@ -25,16 +25,11 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number.parseInt(this.route.snapshot.paramMap.get('id'));
+    if (UtilService.questions == undefined) {
+      window.location.assign("");
+    }
     this.question = UtilService.questions[this.id-1];
     this.template = UtilService.getQuestionTemplate(this.question);
-    //TODO: delete
-    if (this.typeTemplate[1] == 'L') {
-      this.template = "Q_VL_2";
-    } else if (this.typeTemplate[1] == 'C') {
-      this.template = "Q_VC_2";
-    }
-
-    console.log(this.template);
   }
 
   // Redirection des templates suivant le type et le numéro
@@ -62,7 +57,7 @@ export class QuestionComponent implements OnInit {
       ((this.nbTemplate==3) &&
         (this.typeTemplate=='CC')) ||
       ((this.nbTemplate==2) &&
-        (this.typeTemplate=='VC') || this.typeTemplate=='CC')
+        ((this.typeTemplate=='VC') || (this.typeTemplate=='CC')))
     );
   }
   get yesno() {
