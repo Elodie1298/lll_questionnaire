@@ -39,8 +39,12 @@ export class DatabaseConnectService {
   }
 
   public getQuestionList() {
-    return this.http.get(this.getQuestionListURL, {headers: this.headers})
+    this.http.get(this.getQuestionListURL, {headers: this.headers})
       .toPromise()
+      .then((ans: any) => {
+        UtilService.questions = ans.res;
+      })
+      .catch(e => console.log(e));
   }
 
   public postAnswer() {

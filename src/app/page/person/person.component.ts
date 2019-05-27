@@ -33,6 +33,8 @@ export class PersonComponent implements OnInit {
 
   incorrect: boolean = false;
 
+  canValidate: boolean = true;
+
   constructor(private dbConnec: DatabaseConnectService,
               private router: Router) { }
 
@@ -49,7 +51,8 @@ export class PersonComponent implements OnInit {
   next(): void {
     let gender = this.gender;
     let w = this.work;
-    if (this.age != null && w != null && gender!=null) {
+    if (this.age != null && w != null && gender!=null && this.canValidate) {
+      this.canValidate = false;
       this.dbConnec.postPerson({
         age: this.age,
         gender: gender,
