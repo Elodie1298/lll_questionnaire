@@ -4,11 +4,13 @@
   <span *ngIf="isCaracteristique">Quel design trouvez-vous le plus intuitif pour la caractéristique ?</span>
   <div class="row" *ngIf="isCaracteristique">
     <button mat-button class="mat-elevation-z6 img"
-            (click)="select(0)">
+            (click)="select(0)"
+            [ngStyle]="getStyle(0)">
       <img src="assets/img/icons/caracteristique1.png">
     </button>
     <button mat-button class="mat-elevation-z6 img"
-            (click)="select(1)">
+            (click)="select(1)"
+            [ngStyle]="getStyle(1)">
       <img src="assets/img/icons/caracteristique2.png">
     </button>
   </div>

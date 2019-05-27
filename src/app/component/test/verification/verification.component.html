@@ -16,15 +16,22 @@
       <div class="choice">
         <span *ngIf="isCaracteristique">Écoutez cette caractéristique : {{question.carac1.caracName}}</span>
         <span *ngIf="!isCaracteristique">Écoutez ce locuteur :</span>
-        <button mat-button class="mat-elevation-z6 img"
+        <button *ngIf="isCaracteristique" mat-button class="mat-elevation-z6 img"
                 [ngStyle]="speaker1Style"
                 (click)="play('speaker1')"
                 matTooltip="Pour écouter le son, cliquez sur le bouton en haut à droite"
                 matTooltipPosition="right"
                 matTooltipShowDelay="200">
-          <img *ngIf="isCaracteristique" class="carac1" src="assets/img/icons/caracteristique1.png">
-          <img *ngIf="isCaracteristique" class="carac2" src="assets/img/icons/caracteristique2.png">
-          <img *ngIf="!isCaracteristique" src="assets/img/icons/locuteur.png">
+          <img class="carac1" src="assets/img/icons/caracteristique1.png">
+          <img class="carac2" src="assets/img/icons/caracteristique2.png">
+        </button>
+        <button *ngIf="!isCaracteristique" mat-button class="mat-elevation-z6 img loc"
+                [ngStyle]="speaker1Style"
+                (click)="play('speaker1')"
+                matTooltip="Pour écouter le son, cliquez sur le bouton en haut à droite"
+                matTooltipPosition="right"
+                matTooltipShowDelay="200">
+          <img src="assets/img/icons/locuteur.png">
         </button>
         <button mat-mini-fab class="play-sound mat-elevation-z0"(click)="play('speaker1')">
           <mat-icon>volume_up</mat-icon>

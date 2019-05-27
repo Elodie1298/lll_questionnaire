@@ -50,7 +50,8 @@ export class VerificationComponent implements OnInit {
     if (this.currentAudio != path) {
       this.currentAudio = path;
     }
-    if (paused || current!=this.currentAudio) {
+    if (current!=this.currentAudio) {
+      this.audioPlayer.nativeElement.pause();
       setTimeout(() => this.audioPlayer.nativeElement.play(), 500);
     }
   }

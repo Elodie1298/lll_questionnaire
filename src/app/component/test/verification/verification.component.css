@@ -128,6 +128,9 @@
   background-color: #f5f5f5 !important;
   border: none;
 }
+.verification-3 button.img.loc {
+  background-color: #607d8b !important;
+}
 
 .verification-4 .row .col:last-child {
   display: none;
